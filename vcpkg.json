@@ -1,0 +1,10 @@
+{
+  "name": "dungeonforge",
+  "version-string": "1.0",
+  "dependencies": [
+    "fmt",
+    "imgui",
+    "sdl2",
+    "nlohmann-json"
+  ]
+}
