@@ -22,7 +22,7 @@ endif()
 
 #PROGRAM FILES
 file(GLOB_RECURSE SRC_FILES src/*.cpp include/*.hpp)
-add_executable(DungeonForge ${SRC_FILES})
+add_executable(DungeonForge ${SRC_FILES} "include/DungeonMap.hpp" "src/DungeonMap.cpp" "src/DungeonGenerator.cpp")
 target_link_libraries(DungeonForge PUBLIC fmt::fmt)
 target_link_libraries(DungeonForge PUBLIC imgui::imgui)
 target_link_libraries(DungeonForge PUBLIC nlohmann_json::nlohmann_json)
