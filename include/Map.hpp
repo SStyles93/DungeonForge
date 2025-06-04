@@ -7,10 +7,11 @@ enum class TileType {
     Wall
 };
 
-class DungeonMap {
+class Map 
+{
 public:
     //Ctor
-    DungeonMap(int width, int height);
+    Map(int width, int height);
 
     void Clear();
     int GetWidth() const;

@@ -1,30 +1,31 @@
 #include "Renderer.hpp"
 
+#define TILE_SIZE 16
+
 Renderer::Renderer(SDL_Renderer* renderer)
-    : m_Renderer(renderer)
+	: mRenderer(renderer)
 {}
 
-void Renderer::RenderMap(const DungeonMap& map)
+void Renderer::RenderMap(const Map& map)
 {
-    for (int y = 0; y < map.GetHeight(); ++y)
-    {
-        for (int x = 0; x < map.GetWidth(); ++x)
-        {
-            SDL_FRect rect = { (float)x * m_TileSize, (float)y * m_TileSize, (float)m_TileSize, (float)m_TileSize };
-            TileType tile = map.GetTile(x, y);
-            switch (tile)
-            {
-                case TileType::Empty:
-                    SDL_SetRenderDrawColor(m_Renderer, 20, 20, 20, 255);
-                    break;
-                case TileType::Floor:
-                    SDL_SetRenderDrawColor(m_Renderer, 200, 200, 200, 255);
-                    break;
-                case TileType::Wall:
-                    SDL_SetRenderDrawColor(m_Renderer, 100, 100, 100, 255);
-                    break;
-            }
-            SDL_RenderFillRect(m_Renderer, &rect);
-        }
-    }
+	int width = map.GetWidth();
+	int height = map.GetHeight();
+
+	SDL_SetRenderDrawColor(mRenderer, 255, 255, 255, 255);
+
+	for (int y = 0; y < height; ++y)
+	{
+		for (int x = 0; x < width; ++x)
+		{
+
+			SDL_FRect rect;
+			rect.x = x * TILE_SIZE;
+			rect.y = y * TILE_SIZE;
+			rect.w = TILE_SIZE;
+			rect.h = TILE_SIZE;
+
+			SDL_RenderFillRect(mRenderer, &rect);
+
+		}
+	}
 }
