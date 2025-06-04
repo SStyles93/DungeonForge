@@ -46,6 +46,9 @@ int main()
                     case sf::Keyboard::Scancode::D:
                         generator.DrunkardsWalk(map);
                         break;
+                    case sf::Keyboard::Scancode::B:
+                        generator.BSP(map);
+                        break;
                 }
             }
         }
