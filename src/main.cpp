@@ -49,6 +49,12 @@ int main()
                     case sf::Keyboard::Scancode::B:
                         generator.BSP(map);
                         break;
+                    case sf::Keyboard::Scancode::C:
+                        generator.CellularAutomata(map, 45, 5);
+                        break;
+                    case sf::Keyboard::Scancode::W:
+                        generator.WaveFunctionCollapse(map);
+                        break;
                 }
             }
         }
