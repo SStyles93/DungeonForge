@@ -1,19 +1,54 @@
 #include "Generator.hpp"
-#include <random>
+#include <cstdlib>  // for std::rand
 
-void Generator::Generate(Map& map)
+void Generator::Perlin(Map& map)
 {
-    map.Clear();
-    std::random_device rd;
-    std::mt19937 rng(rd());
-    std::uniform_int_distribution<int> distX(0, map.GetWidth());
-    std::uniform_int_distribution<int> distY(0, map.GetHeight());
-
-    // Randomly place rooms
-    for (int i = 0; i < 50; ++i)
+    for (unsigned int y = 0; y < map.getHeight(); ++y)
     {
-        int x = distX(rng);
-        int y = distY(rng);
-        map.SetTile(x, y, TileType::Floor);
+        for (unsigned int x = 0; x < map.getWidth(); ++x)
+        {
+            // Randomly assign 0 (floor) or 1 (wall)
+            int tileValue = std::rand() % 2;
+            map.setTile(x, y, tileValue);
+        }
+    }
+}
+
+void Generator::DrunkardsWalk(Map& map)
+{
+    // Fill map with walls (1)
+    for (unsigned int y = 0; y < map.getHeight(); ++y)
+        for (unsigned int x = 0; x < map.getWidth(); ++x)
+            map.setTile(x, y, 1);
+
+    unsigned int floorCount = 0;
+    unsigned int targetFloorCount = (map.getWidth() * map.getHeight()) * 0.4f;
+
+    // Start in the center
+    int x = map.getWidth() / 2;
+    int y = map.getHeight() / 2;
+
+    map.setTile(x, y, 0);
+    floorCount++;
+
+    while (floorCount < targetFloorCount)
+    {
+        // Random move: 0=left, 1=right, 2=up, 3=down
+        int dir = std::rand() % 4;
+
+        switch (dir)
+        {
+            case 0: if (x > 1) x--; break;
+            case 1: if (x < (int)map.getWidth() - 2) x++; break;
+            case 2: if (y > 1) y--; break;
+            case 3: if (y < (int)map.getHeight() - 2) y++; break;
+        }
+
+        // If cell was a wall, turn it to floor and increment
+        if (map.getTile(x, y) == 1)
+        {
+            map.setTile(x, y, 0);
+            floorCount++;
+        }
     }
 }

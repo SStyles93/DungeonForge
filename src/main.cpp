@@ -12,15 +12,17 @@ int main()
     // create the window
 
     sf::RenderWindow window(sf::VideoMode({ 800, 600 }), "Dungeon Forge");
-    window.setFramerateLimit(60);
-
-    ImGui::SFML::Init(window);
-    if (!ImGui::SFML::Init(window))
-        return -1;
+    //if (!ImGui::SFML::Init(window)) return 1;
 
     //=============================================================================================
     // run the program as long as the window is open
     
+    Generator generator;
+    Map map(50, 50);
+    generator.Perlin(map);  //  Generate dungeon on start
+    Renderer renderer;
+
+    //=============================================================================================
     sf::Clock deltaClock;
     while (window.isOpen())
     {
@@ -29,36 +31,44 @@ int main()
 
         while (const std::optional event = window.pollEvent())
         {
-            ImGui::SFML::ProcessEvent(window, *event);
+            //ImGui::SFML::ProcessEvent(window, *event);
 
             // "close requested" event: we close the window
             if (event->is<sf::Event::Closed>())
                 window.close();
+            else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
+            {
+                switch (keyPressed->scancode)
+                {
+                    case sf::Keyboard::Scancode::P:
+                        generator.Perlin(map);
+                        break;
+                    case sf::Keyboard::Scancode::D:
+                        generator.DrunkardsWalk(map);
+                        break;
+                }
+            }
         }
-        
+      
         //=============================================================================================
-
-        ImGui::SFML::Update(window, deltaClock.restart());
-
+        
+       /* ImGui::SFML::Update(window, deltaClock.restart());
         ImGui::Begin("Hello, world!");
         ImGui::Button("Look at this pretty button");
-        ImGui::End();
+        ImGui::End();*/
 
         //=============================================================================================
-        // clear the window with black color
-        
+
         window.clear(sf::Color::Black);
 
-        sf::CircleShape shape(100.f);
-        shape.setFillColor(sf::Color::Green);
-        window.draw(shape);
-        ImGui::SFML::Render(window);
-        // end the current frame
+        renderer.render(window, map);
+
+        //ImGui::SFML::Render(window);
         window.display();
 
         //=============================================================================================
     }
 
-    ImGui::SFML::Shutdown();
+    //ImGui::SFML::Shutdown();
 	return 0;
 }

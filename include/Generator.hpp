@@ -4,6 +4,6 @@
 class Generator
 {
 public:
-    void Generate(Map& map);
+    void Perlin(Map& map);
+    void DrunkardsWalk(Map& map);
 };
-

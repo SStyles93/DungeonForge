@@ -1,26 +1,18 @@
 #pragma once
 #include <vector>
 
-enum class TileType {
-    Empty,
-    Floor,
-    Wall
-};
-
-class Map 
+class Map
 {
 public:
-    //Ctor
-    Map(int width, int height);
+    Map(unsigned int width, unsigned int height);
 
-    void Clear();
-    int GetWidth() const;
-    int GetHeight() const;
-    TileType GetTile(int x, int y) const;
-    void SetTile(int x, int y, TileType type);
+    void setTile(unsigned int x, unsigned int y, int value);
+    int getTile(unsigned int x, unsigned int y) const;
+    unsigned int getWidth() const;
+    unsigned int getHeight() const;
 
 private:
-    int m_Width;
-    int m_Height;
-    std::vector<TileType> m_Tiles;
+    unsigned int width;
+    unsigned int height;
+    std::vector<int> tiles;
 };

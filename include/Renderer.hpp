@@ -1,11 +1,9 @@
 #pragma once
 #include "Map.hpp"
+#include <SFML/Graphics.hpp>
 
 class Renderer
 {
-//public:
-//    Renderer(SDL_Renderer* renderer);
-//    void RenderMap(const Map& map);
-//private:
-//    SDL_Renderer* mRenderer;
+public:
+    void render(sf::RenderWindow& window, const Map& map);
 };

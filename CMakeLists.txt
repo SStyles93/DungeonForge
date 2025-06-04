@@ -15,6 +15,7 @@ find_package(SFML COMPONENTS Network Graphics Window Audio System CONFIG REQUIRE
 #find_package(GTest CONFIG REQUIRED)
 #find_package(benchmark CONFIG REQUIRED)
 
+
 #TRACY
 option(ENABLE_PROFILER "Enable Tracy Profiling" OFF)
 if(ENABLE_PROFILER)
@@ -29,7 +30,6 @@ target_link_libraries(TestApp PUBLIC imgui::imgui)
 target_link_libraries(TestApp PUBLIC ImGui-SFML::ImGui-SFML)
 target_link_libraries(TestApp PUBLIC nlohmann_json::nlohmann_json)
 target_link_libraries(TestApp PUBLIC SFML::Network SFML::Graphics SFML::Window SFML::Audio SFML::System)
-
 target_link_libraries(TestApp PUBLIC nlohmann_json::nlohmann_json)
 
 if(ENABLE_PROFILER)

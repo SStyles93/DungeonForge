@@ -1,27 +1,21 @@
 #include "Map.hpp"
 
-Map::Map(int width, int height)
-    : m_Width(width), m_Height(height), m_Tiles(width* height, TileType::Empty)
+Map::Map(unsigned int width, unsigned int height)
+    : width(width), height(height), tiles(width* height, 0)
 {}
 
-void Map::Clear()
+void Map::setTile(unsigned int x, unsigned int y, int value)
 {
-    std::fill(m_Tiles.begin(), m_Tiles.end(), TileType::Empty);
+    if (x < width && y < height)
+        tiles[y * width + x] = value;
 }
 
-int Map::GetWidth() const { return m_Width; }
-int Map::GetHeight() const { return m_Height; }
-
-TileType Map::GetTile(int x, int y) const
+int Map::getTile(unsigned int x, unsigned int y) const
 {
-    if (x < 0 || x >= m_Width || y < 0 || y >= m_Height)
-        return TileType::Empty;
-    return m_Tiles[y * m_Width + x];
+    if (x < width && y < height)
+        return tiles[y * width + x];
+    return -1;
 }
 
-void Map::SetTile(int x, int y, TileType type)
-{
-    if (x < 0 || x >= m_Width || y < 0 || y >= m_Height)
-        return;
-    m_Tiles[y * m_Width + x] = type;
-}
+unsigned int Map::getWidth() const { return width; }
+unsigned int Map::getHeight() const { return height; }

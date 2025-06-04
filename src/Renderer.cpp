@@ -1,31 +1,23 @@
 #include "Renderer.hpp"
 
-#define TILE_SIZE 16
+void Renderer::render(sf::RenderWindow& window, const Map& map)
+{
+    const float tileSize = 10.0f;
+    sf::RectangleShape rect(sf::Vector2f(tileSize, tileSize));
 
-//Renderer::Renderer(SDL_Renderer* renderer)
-//	: mRenderer(renderer)
-//{}
+    for (unsigned int y = 0; y < map.getHeight(); ++y)
+    {
+        for (unsigned int x = 0; x < map.getWidth(); ++x)
+        {
+            int tileValue = map.getTile(x, y);
 
-//void Renderer::RenderMap(const Map& map)
-//{
-	//int width = map.GetWidth();
-	//int height = map.GetHeight();
+            if (tileValue == 0)
+                rect.setFillColor(sf::Color::White);
+            else
+                rect.setFillColor(sf::Color::Black);
 
-	//SDL_SetRenderDrawColor(mRenderer, 255, 255, 255, 255);
-
-	//for (int y = 0; y < height; ++y)
-	//{
-	//	for (int x = 0; x < width; ++x)
-	//	{
-
-	//		SDL_FRect rect;
-	//		rect.x = x * TILE_SIZE;
-	//		rect.y = y * TILE_SIZE;
-	//		rect.w = TILE_SIZE;
-	//		rect.h = TILE_SIZE;
-
-	//		SDL_RenderFillRect(mRenderer, &rect);
-
-	//	}
-	//}
-//}
+            rect.setPosition(sf::Vector2f(x * tileSize, y * tileSize));
+            window.draw(rect);
+        }
+    }
+}
