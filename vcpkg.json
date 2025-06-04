@@ -3,8 +3,11 @@
   "version-string": "1.0",
   "dependencies": [
     "fmt",
-    "imgui",
-    "sdl2",
-    "nlohmann-json"
+    "sdl3",
+    "nlohmann-json",
+    {
+      "name": "imgui",
+      "features": [ "sdl3-binding", "opengl3-binding", "docking-experimental" ]
+    }
   ]
 }

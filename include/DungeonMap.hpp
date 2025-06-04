@@ -10,25 +10,7 @@ enum class TileType {
 class DungeonMap {
 public:
     //Ctor
-    DungeonMap();
     DungeonMap(int width, int height);
-    //Dtor
-    ~DungeonMap();
-    //Copy Ctor
-    DungeonMap(const DungeonMap& other);
-    //Move Ctor
-    DungeonMap(DungeonMap&& other);
-    //Copy assign
-    DungeonMap& operator=(const DungeonMap& other)
-    {
-        return *this = DungeonMap(other);
-    }
-    //Move assign
-    DungeonMap& operator=(DungeonMap&& other) 
-    {
-        //std::swap(val, other.val)
-        //return *this;
-    }
 
     void Clear();
     int GetWidth() const;
