@@ -61,10 +61,27 @@ int main()
         //=============================================================================================
         
         ImGui::SFML::Update(window, deltaClock.restart());
-        ImGui::Begin("Hello, world!");
-        ImGui::Button("Look at this pretty button");
+        ImGui::Begin("Map Generator");
+
+        static int selected_generator = -1;
+        const char* names[] = { "Perlin", "Drunkard's Walk", "Binary Space Partitioning", "Cellular Automata", "Wave Function Collapse" };
+        static bool toggles[] = { true, false, false, false, false };
+
+        if (ImGui::Button("Select the Generator"))
+            ImGui::OpenPopup("Generator_Popup");
+        ImGui::SameLine();
+        ImGui::TextUnformatted(selected_generator == -1 ? "<None>" : names[selected_generator]);
+        if (ImGui::BeginPopup("Generator_Popup"))
+        {
+            ImGui::SeparatorText("Generators");
+            for (int i = 0; i < IM_ARRAYSIZE(names); i++)
+                if (ImGui::Selectable(names[i]))
+                    selected_generator = i;
+            ImGui::EndPopup();
+        }
+        ImGui::Button("Generate");
         ImGui::End();
-        //ImGui::ShowDemoWindow();
+        ImGui::ShowDemoWindow();
         //=============================================================================================
 
         window.clear(sf::Color::Black);
