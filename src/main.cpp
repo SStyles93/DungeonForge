@@ -8,13 +8,13 @@
 
 int main()
 {	
-    //=============================================================================================
+    //========================================WINDOW INIT=====================================================
     // create the window
 
     sf::RenderWindow window(sf::VideoMode({ 800, 600 }), "Dungeon Forge");
     if (!ImGui::SFML::Init(window)) return 1;
 
-    //=============================================================================================
+    //=========================================PROGRAM INIT====================================================
     // run the program as long as the window is open
     
     Generator generator;
@@ -22,12 +22,11 @@ int main()
     generator.Perlin(map);  //  Generate dungeon on start
     Renderer renderer;
 
-    //=============================================================================================
     sf::Clock deltaClock;
+    //======================================LOGIC LOOP=======================================================
     while (window.isOpen())
     {
-        //=============================================================================================
-        // check all the window's events that were triggered since the last iteration of the loop
+        //======================================EVENT LOOP=======================================================
 
         while (const std::optional event = window.pollEvent())
         {
@@ -35,7 +34,7 @@ int main()
             // "close requested" event: we close the window
             if (event->is<sf::Event::Closed>())
                 window.close();
-            else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
+            /*else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
             {
                 switch (keyPressed->scancode)
                 {
@@ -55,17 +54,16 @@ int main()
                         generator.WaveFunctionCollapse(map);
                         break;
                 }
-            }
+            }*/
         }
       
-        //=============================================================================================
+        //====================================IMGUI RENDER=========================================================
         
         ImGui::SFML::Update(window, deltaClock.restart());
         ImGui::Begin("Map Generator");
 
         static int selected_generator = -1;
         const char* names[] = { "Perlin", "Drunkard's Walk", "Binary Space Partitioning", "Cellular Automata", "Wave Function Collapse" };
-        static bool toggles[] = { true, false, false, false, false };
 
         if (ImGui::Button("Select the Generator"))
             ImGui::OpenPopup("Generator_Popup");
@@ -79,10 +77,39 @@ int main()
                     selected_generator = i;
             ImGui::EndPopup();
         }
-        ImGui::Button("Generate");
+        static int show_error_message = 0;
+        if (ImGui::Button("Generate"))
+        {
+            switch (selected_generator)
+            {
+                case 0:
+                    generator.Perlin(map);
+                    break;
+                case 1:
+                    generator.DrunkardsWalk(map);
+                    break;
+                case 2:
+                    generator.BSP(map);
+                    break;
+                case 3:
+                    generator.CellularAutomata(map, 45, 5);
+                    break;
+                case 4:
+                    generator.WaveFunctionCollapse(map);
+                    break;
+                default:
+                    show_error_message = 1;
+                    printf("Trying to generate map without any generator selected");
+                    break;
+            }
+        }
+        if(show_error_message && selected_generator == -1)
+        ImGui::TextColored(ImVec4(sf::Color::Red), "No generator was selected");
+
         ImGui::End();
-        ImGui::ShowDemoWindow();
-        //=============================================================================================
+
+        //ImGui::ShowDemoWindow();
+        //========================================RENDER=====================================================
 
         window.clear(sf::Color::Black);
 
@@ -91,8 +118,8 @@ int main()
         ImGui::SFML::Render(window);
         window.display();
 
-        //=============================================================================================
     }
+    //========================================SHUTDOWN=====================================================
 
     ImGui::SFML::Shutdown();
 	return 0;
