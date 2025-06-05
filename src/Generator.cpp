@@ -336,6 +336,8 @@ void Generator::connectPoints(Map& map, const sf::Vector2i& a, const sf::Vector2
 
 void Generator::WaveFunctionCollapse(Map& map)
 {
+    loadPatterns();
+
     int width = map.getWidth();
     int height = map.getHeight();
     std::vector<std::vector<std::vector<int>>> wave(width, std::vector<std::vector<int>>(height));
@@ -455,27 +457,64 @@ void Generator::loadPatterns()
 
     patterns.push_back({ 0, {
         {1,1,1},
-        {1,0,1},
+        {1,1,1},
         {1,1,1}
-    }, {{0,1,2,3,4,5},{0,1,2,3,4,5},{0,1,2,3,4,5},{0,1,2,3,4,5}} });
+    }, {{0,1,3,5,6,7,8},{0,1,3,5,6,7,8},{0,1,3,5,6,7,8},{0,1,3,5,6,7,8}} });
 
+    // Open center
     patterns.push_back({ 1, {
         {1,1,1},
+        {1,0,1},
+        {1,1,1}
+    }, {{1,2,4,6,7},{1,2,4,6,7},{1,2,4,6,7},{1,2,4,6,7}} });
+
+    // Horizontal corridor
+    patterns.push_back({ 2, {
+        {1,1,1},
         {0,0,0},
         {1,1,1}
-    }, {{0,1},{0,1},{0,1},{0,1}} });
+    }, {{1,2,4,6,7},{1,2,4,6,7},{2,4,5,7,8},{2,4,5,7,8}} });
 
-    patterns.push_back({ 2, {
+    // Vertical corridor
+    patterns.push_back({ 3, {
+        {1,0,1},
+        {1,0,1},
+        {1,0,1}
+    }, {{3,4,5,6,7,8},{3,4,5,6,7,8},{1,3,4,6,7},{1,3,4,6,7}} });
+
+    // Top-left corner
+    patterns.push_back({ 4, {
+        {1,1,1},
+        {1,0,0},
+        {1,0,1}
+    }, {{1,2,3,4,6},{1,2,3,4,6},{1,2,3,4,6},{1,2,3,4,6}} });
+
+    // Top-right corner
+    patterns.push_back({ 5, {
+        {1,1,1},
+        {0,0,1},
+        {1,0,1}
+    }, {{1,2,3,5,7},{1,2,3,5,7},{1,2,3,5,7},{1,2,3,5,7}} });
+
+    // Bottom-left corner
+    patterns.push_back({ 6, {
+        {1,0,1},
+        {1,0,0},
+        {1,1,1}
+    }, {{1,2,3,6,8},{1,2,3,6,8},{1,2,3,6,8},{1,2,3,6,8}} });
+
+    // Bottom-right corner
+    patterns.push_back({ 7, {
+        {1,0,1},
+        {0,0,1},
+        {1,1,1}
+    }, {{1,2,3,7,8},{1,2,3,7,8},{1,2,3,7,8},{1,2,3,7,8}} });
+
+    // T-intersection
+    patterns.push_back({ 8, {
         {1,0,1},
         {0,0,0},
-        {1,0,1}
-    }, {{1,2},{1,2},{1,2},{1,2}} });
-
-    patterns.push_back({ 3, {
-        {1,1,1},
-        {1,1,1},
         {1,1,1}
-    }, {{3},{3},{3},{3}} });
-
+    }, {{1,2,3,8},{1,2,3,8},{1,2,3,8},{1,2,3,8}} });
     // Add more patterns with compatible allowedNeighbors
 }

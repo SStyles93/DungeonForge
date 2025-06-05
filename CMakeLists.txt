@@ -8,10 +8,10 @@ set(CMAKE_CXX_STRANDARD_REQUIRED ON)
 include(C:/vcpkg/scripts/buildsystems/vcpkg.cmake)
 
 find_package(fmt CONFIG REQUIRED)
-find_package(imgui CONFIG REQUIRED)
-find_package(ImGui-SFML CONFIG REQUIRED)
+#find_package(imgui CONFIG REQUIRED)
+#find_package(ImGui-SFML CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
-find_package(SFML COMPONENTS Network Graphics Window Audio System CONFIG REQUIRED)
+#find_package(SFML COMPONENTS Network Graphics Window Audio System CONFIG REQUIRED)
 #find_package(GTest CONFIG REQUIRED)
 #find_package(benchmark CONFIG REQUIRED)
 
@@ -22,15 +22,19 @@ if(ENABLE_PROFILER)
 add_subdirectory(external/tracy)
 endif()
 
+add_subdirectory(external/imgui)
+add_subdirectory(external/imgui-sfml)
+add_subdirectory(external/SFML)
+
 #PROGRAM FILES
 file(GLOB_RECURSE SRC_FILES src/*.cpp include/*.hpp)
 add_executable(TestApp ${SRC_FILES})
 target_link_libraries(TestApp PUBLIC fmt::fmt)
-target_link_libraries(TestApp PUBLIC imgui::imgui)
-target_link_libraries(TestApp PUBLIC ImGui-SFML::ImGui-SFML)
+#target_link_libraries(TestApp PUBLIC imgui::imgui)
+#target_link_libraries(TestApp PUBLIC ImGui-SFML::ImGui-SFML)
 target_link_libraries(TestApp PUBLIC nlohmann_json::nlohmann_json)
-target_link_libraries(TestApp PUBLIC SFML::Network SFML::Graphics SFML::Window SFML::Audio SFML::System)
-target_link_libraries(TestApp PUBLIC nlohmann_json::nlohmann_json)
+#target_link_libraries(TestApp PUBLIC SFML::Network SFML::Graphics SFML::Window SFML::Audio SFML::System)
+target_link_libraries(TestApp PUBLIC external/imgui)
 
 if(ENABLE_PROFILER)
 target_link_libraries(TestApp PUBLIC TracyClient)
@@ -64,10 +68,10 @@ target_include_directories(TestApp PUBLIC include/)
 ##file(COPY ${ASSET_FILE} DESTINATION ../assets)
 ##endforeach()
 
-if (MSVC)
-    # MinimumSize/MaximumSpeed flag
-    add_compile_options(/O2 /fp:fast)
-else()
-    # Optimize speed + add openMP
-    add_compile_options(-O3 -ffast-math -fopenmp=libomp)
-endif()
+#if (MSVC)
+#    # MinimumSize/MaximumSpeed flag
+#    add_compile_options(/O2 /fp:fast)
+#else()
+#    # Optimize speed + add openMP
+#    add_compile_options(-O3 -ffast-math -fopenmp=libomp)
+#endif()

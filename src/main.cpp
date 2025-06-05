@@ -12,7 +12,7 @@ int main()
     // create the window
 
     sf::RenderWindow window(sf::VideoMode({ 800, 600 }), "Dungeon Forge");
-    //if (!ImGui::SFML::Init(window)) return 1;
+    if (!ImGui::SFML::Init(window)) return 1;
 
     //=============================================================================================
     // run the program as long as the window is open
@@ -31,8 +31,6 @@ int main()
 
         while (const std::optional event = window.pollEvent())
         {
-            //ImGui::SFML::ProcessEvent(window, *event);
-
             // "close requested" event: we close the window
             if (event->is<sf::Event::Closed>())
                 window.close();
@@ -61,10 +59,10 @@ int main()
       
         //=============================================================================================
         
-       /* ImGui::SFML::Update(window, deltaClock.restart());
+        ImGui::SFML::Update(window, deltaClock.restart());
         ImGui::Begin("Hello, world!");
         ImGui::Button("Look at this pretty button");
-        ImGui::End();*/
+        ImGui::End();
 
         //=============================================================================================
 
@@ -72,7 +70,7 @@ int main()
 
         renderer.render(window, map);
 
-        //ImGui::SFML::Render(window);
+        ImGui::SFML::Render(window);
         window.display();
 
         //=============================================================================================
