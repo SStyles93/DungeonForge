@@ -16,6 +16,11 @@
           "name": "ENABLE_PROFILER",
           "value": "True",
           "type": "BOOL"
+        },
+        {
+          "name": "IMGUI_DIR",
+          "value": "C:/00_Dev/DungeonForge/external/imgui",
+          "type": "PATH"
         }
       ]
     },
