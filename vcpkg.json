@@ -3,6 +3,8 @@
   "version-string": "1.0",
   "dependencies": [
     "fmt",
+    "imgui",
+    "imgui-sfml",
     "nlohmann-json",
     "sfml"
   ]
