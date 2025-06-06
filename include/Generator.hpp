@@ -9,20 +9,45 @@
 #include <queue>
 #include <vector>
 
+enum AlgorithmType
+{
+    Perlin,
+    DrunkardsWalk,
+    BinarySpacePartitioning,
+    CellularAutomata,
+    WaveFunctionCollapse
+};
+
 class Generator
 {
 public:
-    void Perlin(Map& map);
-    void DrunkardsWalk(Map& map);
-    void BSP(Map& map);
-    void CellularAutomata(Map& map, int fillProbability, int iterations);
-    void WaveFunctionCollapse(Map& map);
+    
+    Generator(Map& map);
+
+    void Generate();
+
+    
+    Map GetMap();
+
+    void SetAlgorithm(AlgorithmType type);
+    void SetMap(Map& map);
 
 private:
     struct Rect
     {
         int x, y, width, height;
     };
+
+
+    Map m_map;
+    AlgorithmType m_algorithmType = AlgorithmType::Perlin;
+
+    //Algorithms
+    void generatePerlin(Map& map);
+    void generateDrunkardsWalk(Map& map);
+    void generateBSP(Map& map);
+    void generateCellularAutomata(Map& map, int fillProbability, int iterations);
+    void generateWFC(Map& map);
 
     //BSP
     void splitSpace(std::vector<Rect>& spaces, int maxLeafSize);
@@ -43,8 +68,7 @@ private:
         // Allowed neighbor pattern IDs by direction: 0=up, 1=down, 2=left, 3=right
         std::vector<int> allowedNeighbors[4];
     };
-
-    std::vector<Pattern> patterns;
+    std::vector<Pattern> m_patterns;
 
     void loadPatterns();
     void propagate(std::vector<std::vector<std::vector<int>>>& wave, int width, int height);

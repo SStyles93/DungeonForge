@@ -6,10 +6,11 @@ class Map
 public:
     Map(unsigned int width, unsigned int height);
 
+
     void setTile(unsigned int x, unsigned int y, int value);
     int getTile(unsigned int x, unsigned int y) const;
-    unsigned int getWidth() const;
-    unsigned int getHeight() const;
+    unsigned int GetWidth() const;
+    unsigned int GetHeight() const;
 
 private:
     unsigned int width;

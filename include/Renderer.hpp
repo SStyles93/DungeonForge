@@ -5,5 +5,5 @@
 class Renderer
 {
 public:
-    void render(sf::RenderWindow& window, const Map& map);
+    void render(sf::RenderWindow& window, Map& map);
 };

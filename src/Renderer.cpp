@@ -1,13 +1,13 @@
 #include "Renderer.hpp"
 
-void Renderer::render(sf::RenderWindow& window, const Map& map)
+void Renderer::render(sf::RenderWindow& window, Map& map)
 {
     const float tileSize = 10.0f;
     sf::RectangleShape rect(sf::Vector2f(tileSize, tileSize));
 
-    for (unsigned int y = 0; y < map.getHeight(); ++y)
+    for (unsigned int y = 0; y < map.GetHeight(); ++y)
     {
-        for (unsigned int x = 0; x < map.getWidth(); ++x)
+        for (unsigned int x = 0; x < map.GetWidth(); ++x)
         {
             int tileValue = map.getTile(x, y);
 

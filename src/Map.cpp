@@ -17,5 +17,5 @@ int Map::getTile(unsigned int x, unsigned int y) const
     return -1;
 }
 
-unsigned int Map::getWidth() const { return width; }
-unsigned int Map::getHeight() const { return height; }
+unsigned int Map::GetWidth() const { return width; }
+unsigned int Map::GetHeight() const { return height; }

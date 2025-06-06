@@ -1,11 +1,52 @@
 #include "Generator.hpp"
 
+Generator::Generator(Map& map) : m_map(map)
+{};
 
-void Generator::Perlin(Map& map)
+void Generator::Generate()
 {
-    for (unsigned int y = 0; y < map.getHeight(); ++y)
+    switch (m_algorithmType)
     {
-        for (unsigned int x = 0; x < map.getWidth(); ++x)
+        case Perlin:
+            generatePerlin(m_map);
+            break;
+        case DrunkardsWalk:
+            generateDrunkardsWalk(m_map);
+            break;
+        case BinarySpacePartitioning:
+            generateBSP(m_map);
+            break;
+        case CellularAutomata:
+            generateCellularAutomata(m_map, 45, 5);
+            break;
+        case WaveFunctionCollapse:
+            generateWFC(m_map);
+            break;
+        default:
+            break;
+    }
+}
+
+void Generator::SetAlgorithm(AlgorithmType type)
+{
+    m_algorithmType = type;
+}
+
+Map Generator::GetMap()
+{
+    return m_map;
+}
+
+void Generator::SetMap(Map& map)
+{
+    m_map = map;
+}
+
+void Generator::generatePerlin(Map& map)
+{
+    for (unsigned int y = 0; y < map.GetHeight(); ++y)
+    {
+        for (unsigned int x = 0; x < map.GetWidth(); ++x)
         {
             // Randomly assign 0 (floor) or 1 (wall)
             int tileValue = std::rand() % 2;
@@ -14,19 +55,21 @@ void Generator::Perlin(Map& map)
     }
 }
 
-void Generator::DrunkardsWalk(Map& map)
+
+
+void Generator::generateDrunkardsWalk(Map& map)
 {
     // Fill map with walls (1)
-    for (unsigned int y = 0; y < map.getHeight(); ++y)
-        for (unsigned int x = 0; x < map.getWidth(); ++x)
+    for (unsigned int y = 0; y < map.GetHeight(); ++y)
+        for (unsigned int x = 0; x < map.GetWidth(); ++x)
             map.setTile(x, y, 1);
 
     unsigned int floorCount = 0;
-    unsigned int targetFloorCount = (map.getWidth() * map.getHeight()) * 0.4f;
+    unsigned int targetFloorCount = (map.GetWidth() * map.GetHeight()) * 0.4f;
 
     // Start in the center
-    int x = map.getWidth() / 2;
-    int y = map.getHeight() / 2;
+    int x = map.GetWidth() / 2;
+    int y = map.GetHeight() / 2;
 
     map.setTile(x, y, 0);
     floorCount++;
@@ -39,9 +82,9 @@ void Generator::DrunkardsWalk(Map& map)
         switch (dir)
         {
             case 0: if (x > 1) x--; break;
-            case 1: if (x < (int)map.getWidth() - 2) x++; break;
+            case 1: if (x < (int)map.GetWidth() - 2) x++; break;
             case 2: if (y > 1) y--; break;
-            case 3: if (y < (int)map.getHeight() - 2) y++; break;
+            case 3: if (y < (int)map.GetHeight() - 2) y++; break;
         }
 
         // If cell was a wall, turn it to floor and increment
@@ -55,15 +98,15 @@ void Generator::DrunkardsWalk(Map& map)
 
 
 
-void Generator::BSP(Map& map)
+void Generator::generateBSP(Map& map)
 {
     // Fill map with walls
-    for (unsigned int y = 0; y < map.getHeight(); ++y)
-        for (unsigned int x = 0; x < map.getWidth(); ++x)
+    for (unsigned int y = 0; y < map.GetHeight(); ++y)
+        for (unsigned int x = 0; x < map.GetWidth(); ++x)
             map.setTile(x, y, 1);
 
     std::vector<Rect> spaces;
-    spaces.push_back({ 1, 1, (int)map.getWidth() - 2, (int)map.getHeight() - 2 });
+    spaces.push_back({ 1, 1, (int)map.GetWidth() - 2, (int)map.GetHeight() - 2 });
 
     int maxLeafSize = 20;
     splitSpace(spaces, maxLeafSize);
@@ -165,15 +208,15 @@ void Generator::connectRooms(Map& map, const sf::Vector2i& pointA, const sf::Vec
 
 
 
-void Generator::CellularAutomata(Map& map, int fillProbability, int iterations)
+void Generator::generateCellularAutomata(Map& map, int fillProbability, int iterations)
 {
     // Fill map with walls (default)
-    for (unsigned int y = 0; y < map.getHeight(); ++y)
-        for (unsigned int x = 0; x < map.getWidth(); ++x)
+    for (unsigned int y = 0; y < map.GetHeight(); ++y)
+        for (unsigned int x = 0; x < map.GetWidth(); ++x)
             map.setTile(x, y, 1);
 
-    unsigned int width = map.getWidth();
-    unsigned int height = map.getHeight();
+    unsigned int width = map.GetWidth();
+    unsigned int height = map.GetHeight();
 
     // Step 1: randomly fill map
     for (unsigned int y = 0; y < height; ++y)
@@ -232,8 +275,8 @@ void Generator::CellularAutomata(Map& map, int fillProbability, int iterations)
 
 void Generator::floodFillRegions(Map& map)
 {
-    unsigned int width = map.getWidth();
-    unsigned int height = map.getHeight();
+    unsigned int width = map.GetWidth();
+    unsigned int height = map.GetHeight();
 
     Map regionMap(width, height);
     int regionId = 2;  // start at 2 because 0=floor, 1=wall
@@ -309,7 +352,8 @@ void Generator::floodFillRegions(Map& map)
         if (id == largestRegionId)
             continue;
 
-        sf::Vector2i from = tiles[0]; // pick a random tile in the isolated region
+        sf::Vector2i from = tiles[std::rand() % tiles.size()];
+        // pick a random tile in the isolated region
         sf::Vector2i to = regions[largestRegionId][std::rand() % regions[largestRegionId].size()];
         connectPoints(map, from, to);
     }
@@ -334,18 +378,18 @@ void Generator::connectPoints(Map& map, const sf::Vector2i& a, const sf::Vector2
 
 
 
-void Generator::WaveFunctionCollapse(Map& map)
+void Generator::generateWFC(Map& map)
 {
     loadPatterns();
 
-    int width = map.getWidth();
-    int height = map.getHeight();
+    int width = map.GetWidth();
+    int height = map.GetHeight();
     std::vector<std::vector<std::vector<int>>> wave(width, std::vector<std::vector<int>>(height));
 
     // Initialize wave with all possible pattern IDs
     for (int y = 0; y < height; ++y)
         for (int x = 0; x < width; ++x)
-            for (const auto& pattern : patterns)
+            for (const auto& pattern : m_patterns)
                 wave[x][y].push_back(pattern.id);
 
     // Collapse cells progressively
@@ -366,7 +410,7 @@ void Generator::WaveFunctionCollapse(Map& map)
         for (int x = 0; x < width; ++x)
         {
             int patternId = wave[x][y][0];
-            int tileValue = patterns[patternId].tiles[1][1]; // use center value
+            int tileValue = m_patterns[patternId].tiles[1][1]; // use center value
             map.setTile(x, y, tileValue);
         }
 }
@@ -400,7 +444,7 @@ void Generator::propagate(std::vector<std::vector<std::vector<int>>>& wave, int 
 
                         bool neighborCompatible = false;
                         for (int nid : wave[nx][ny])
-                            if (std::find(patterns[id].allowedNeighbors[dir].begin(), patterns[id].allowedNeighbors[dir].end(), nid) != patterns[id].allowedNeighbors[dir].end())
+                            if (std::find(m_patterns[id].allowedNeighbors[dir].begin(), m_patterns[id].allowedNeighbors[dir].end(), nid) != m_patterns[id].allowedNeighbors[dir].end())
                                 neighborCompatible = true;
 
                         if (!neighborCompatible)
@@ -453,65 +497,65 @@ void Generator::collapseCell(std::vector<std::vector<std::vector<int>>>& wave, i
 
 void Generator::loadPatterns()
 {
-    patterns.clear();
+    m_patterns.clear();
 
-    patterns.push_back({ 0, {
+    m_patterns.push_back({ 0, {
         {1,1,1},
         {1,1,1},
         {1,1,1}
     }, {{0,1,3,5,6,7,8},{0,1,3,5,6,7,8},{0,1,3,5,6,7,8},{0,1,3,5,6,7,8}} });
 
     // Open center
-    patterns.push_back({ 1, {
+    m_patterns.push_back({ 1, {
         {1,1,1},
         {1,0,1},
         {1,1,1}
     }, {{1,2,4,6,7},{1,2,4,6,7},{1,2,4,6,7},{1,2,4,6,7}} });
 
     // Horizontal corridor
-    patterns.push_back({ 2, {
+    m_patterns.push_back({ 2, {
         {1,1,1},
         {0,0,0},
         {1,1,1}
     }, {{1,2,4,6,7},{1,2,4,6,7},{2,4,5,7,8},{2,4,5,7,8}} });
 
     // Vertical corridor
-    patterns.push_back({ 3, {
+    m_patterns.push_back({ 3, {
         {1,0,1},
         {1,0,1},
         {1,0,1}
     }, {{3,4,5,6,7,8},{3,4,5,6,7,8},{1,3,4,6,7},{1,3,4,6,7}} });
 
     // Top-left corner
-    patterns.push_back({ 4, {
+    m_patterns.push_back({ 4, {
         {1,1,1},
         {1,0,0},
         {1,0,1}
     }, {{1,2,3,4,6},{1,2,3,4,6},{1,2,3,4,6},{1,2,3,4,6}} });
 
     // Top-right corner
-    patterns.push_back({ 5, {
+    m_patterns.push_back({ 5, {
         {1,1,1},
         {0,0,1},
         {1,0,1}
     }, {{1,2,3,5,7},{1,2,3,5,7},{1,2,3,5,7},{1,2,3,5,7}} });
 
     // Bottom-left corner
-    patterns.push_back({ 6, {
+    m_patterns.push_back({ 6, {
         {1,0,1},
         {1,0,0},
         {1,1,1}
     }, {{1,2,3,6,8},{1,2,3,6,8},{1,2,3,6,8},{1,2,3,6,8}} });
 
     // Bottom-right corner
-    patterns.push_back({ 7, {
+    m_patterns.push_back({ 7, {
         {1,0,1},
         {0,0,1},
         {1,1,1}
     }, {{1,2,3,7,8},{1,2,3,7,8},{1,2,3,7,8},{1,2,3,7,8}} });
 
     // T-intersection
-    patterns.push_back({ 8, {
+    m_patterns.push_back({ 8, {
         {1,0,1},
         {0,0,0},
         {1,1,1}
