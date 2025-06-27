@@ -1,52 +1,57 @@
 #include "Generator.hpp"
 
-Generator::Generator(Map& map) : m_map(map)
+Generator::Generator(unsigned int width, unsigned int height) : m_map(Map(width, height))
 {};
 
-void Generator::Generate()
+void Generator::generate()
 {
     switch (m_algorithmType)
     {
-        case Perlin:
-            generatePerlin(m_map);
-            break;
-        case DrunkardsWalk:
-            generateDrunkardsWalk(m_map);
-            break;
         case BinarySpacePartitioning:
             generateBSP(m_map);
             break;
         case CellularAutomata:
             generateCellularAutomata(m_map, 45, 5);
             break;
+        case DrunkardsWalk:
+            generateDrunkardsWalk(m_map);
+            break;
+        case Perlin:
+            generatePerlin(m_map);
+            break;
         case WaveFunctionCollapse:
-            generateWFC(m_map);
+            //generateWFC(m_map);
             break;
         default:
             break;
     }
 }
 
-void Generator::SetAlgorithm(AlgorithmType type)
+void Generator::setAlgorithm(AlgorithmType type)
 {
     m_algorithmType = type;
 }
 
-Map Generator::GetMap()
+int Generator::getAlgorithm()
+{
+    return m_algorithmType;
+}
+
+Map& Generator::getMap()
 {
     return m_map;
 }
 
-void Generator::SetMap(Map& map)
+void Generator::setMap(Map& map)
 {
     m_map = map;
 }
 
 void Generator::generatePerlin(Map& map)
 {
-    for (unsigned int y = 0; y < map.GetHeight(); ++y)
+    for (unsigned int y = 0; y < map.getHeight(); ++y)
     {
-        for (unsigned int x = 0; x < map.GetWidth(); ++x)
+        for (unsigned int x = 0; x < map.getWidth(); ++x)
         {
             // Randomly assign 0 (floor) or 1 (wall)
             int tileValue = std::rand() % 2;
@@ -55,21 +60,65 @@ void Generator::generatePerlin(Map& map)
     }
 }
 
+//DLL EXPORT
+
+PXP_DF_API Generator* CreateGenerator(unsigned int width, unsigned int height)
+{
+    return new Generator(width, height);
+}
+
+PXP_DF_API void DeleteGenerator(Generator* instance)
+{
+    delete instance;
+}
+
+PXP_DF_API void Generate(Generator* instance)
+{
+    if (instance == nullptr) return;
+    instance->generate();
+}
+
+PXP_DF_API Map& GetMap(Generator* instance)
+{
+    if (instance != nullptr)
+    return instance->getMap();
+}
+
+PXP_DF_API int GetTile(Generator* instance, unsigned int x, unsigned int y)
+{
+    return instance ? instance->getMap().getTile(x, y) : 0;
+}
+
+PXP_DF_API void SetAlgorithm(Generator* instance, int type)
+{
+    if (instance != nullptr)
+    {
+        instance->setAlgorithm((AlgorithmType)type);
+    }
+}
+
+PXP_DF_API int GetAlgorithm(Generator* instance, int type)
+{
+    return instance ? instance->getAlgorithm() : -1;
+}
+
+#pragma region TODO
+
 
 
 void Generator::generateDrunkardsWalk(Map& map)
 {
     // Fill map with walls (1)
-    for (unsigned int y = 0; y < map.GetHeight(); ++y)
-        for (unsigned int x = 0; x < map.GetWidth(); ++x)
+    for (unsigned int y = 0; y < map.getHeight(); ++y)
+        for (unsigned int x = 0; x < map.getWidth(); ++x)
             map.setTile(x, y, 1);
 
     unsigned int floorCount = 0;
-    unsigned int targetFloorCount = (map.GetWidth() * map.GetHeight()) * 0.4f;
+    unsigned int targetFloorCount = (map.getWidth() * map.getHeight()) * 0.4f;
 
     // Start in the center
-    int x = map.GetWidth() / 2;
-    int y = map.GetHeight() / 2;
+    int x = map.getWidth() / 2;
+    int y = map.getHeight() / 2;
 
     map.setTile(x, y, 0);
     floorCount++;
@@ -82,9 +131,9 @@ void Generator::generateDrunkardsWalk(Map& map)
         switch (dir)
         {
             case 0: if (x > 1) x--; break;
-            case 1: if (x < (int)map.GetWidth() - 2) x++; break;
+            case 1: if (x < (int)map.getWidth() - 2) x++; break;
             case 2: if (y > 1) y--; break;
-            case 3: if (y < (int)map.GetHeight() - 2) y++; break;
+            case 3: if (y < (int)map.getHeight() - 2) y++; break;
         }
 
         // If cell was a wall, turn it to floor and increment
@@ -101,17 +150,17 @@ void Generator::generateDrunkardsWalk(Map& map)
 void Generator::generateBSP(Map& map)
 {
     // Fill map with walls
-    for (unsigned int y = 0; y < map.GetHeight(); ++y)
-        for (unsigned int x = 0; x < map.GetWidth(); ++x)
+    for (unsigned int y = 0; y < map.getHeight(); ++y)
+        for (unsigned int x = 0; x < map.getWidth(); ++x)
             map.setTile(x, y, 1);
 
     std::vector<Rect> spaces;
-    spaces.push_back({ 1, 1, (int)map.GetWidth() - 2, (int)map.GetHeight() - 2 });
+    spaces.push_back({ 1, 1, (int)map.getWidth() - 2, (int)map.getHeight() - 2 });
 
     int maxLeafSize = 20;
     splitSpace(spaces, maxLeafSize);
 
-    std::vector<sf::Vector2i> roomCenters;
+    std::vector<std::pair<int, int>> roomCenters;
 
     for (const Rect& space : spaces)
     {
@@ -189,20 +238,20 @@ void Generator::createRoom(Map& map, const Rect& room)
     }
 }
 
-void Generator::connectRooms(Map& map, const sf::Vector2i& pointA, const sf::Vector2i& pointB)
+void Generator::connectRooms(Map& map, const std::pair<int, int>& pointA, const std::pair<int, int>& pointB)
 {
-    sf::Vector2i current = pointA;
+    std::pair<int, int> current = pointA;
 
-    while (current.x != pointB.x)
+    while (current.first != pointB.first)
     {
-        map.setTile(current.x, current.y, 0);
-        current.x += (pointB.x > current.x) ? 1 : -1;
+        map.setTile(current.first, current.second, 0);
+        current.first += (pointB.first > current.first) ? 1 : -1;
     }
 
-    while (current.y != pointB.y)
+    while (current.second != pointB.second)
     {
-        map.setTile(current.x, current.y, 0);
-        current.y += (pointB.y > current.y) ? 1 : -1;
+        map.setTile(current.first, current.second, 0);
+        current.second += (pointB.second > current.second ? 1 : -1);
     }
 }
 
@@ -211,12 +260,12 @@ void Generator::connectRooms(Map& map, const sf::Vector2i& pointA, const sf::Vec
 void Generator::generateCellularAutomata(Map& map, int fillProbability, int iterations)
 {
     // Fill map with walls (default)
-    for (unsigned int y = 0; y < map.GetHeight(); ++y)
-        for (unsigned int x = 0; x < map.GetWidth(); ++x)
+    for (unsigned int y = 0; y < map.getHeight(); ++y)
+        for (unsigned int x = 0; x < map.getWidth(); ++x)
             map.setTile(x, y, 1);
 
-    unsigned int width = map.GetWidth();
-    unsigned int height = map.GetHeight();
+    unsigned int width = map.getWidth();
+    unsigned int height = map.getHeight();
 
     // Step 1: randomly fill map
     for (unsigned int y = 0; y < height; ++y)
@@ -275,12 +324,12 @@ void Generator::generateCellularAutomata(Map& map, int fillProbability, int iter
 
 void Generator::floodFillRegions(Map& map)
 {
-    unsigned int width = map.GetWidth();
-    unsigned int height = map.GetHeight();
+    unsigned int width = map.getWidth();
+    unsigned int height = map.getHeight();
 
     Map regionMap(width, height);
     int regionId = 2;  // start at 2 because 0=floor, 1=wall
-    std::map<int, std::vector<sf::Vector2i>> regions;
+    std::map<int, std::vector<std::pair<int,int>>> regions;
 
     for (unsigned int y = 0; y < height; ++y)
     {
@@ -289,7 +338,7 @@ void Generator::floodFillRegions(Map& map)
             if (map.getTile(x, y) != 0 || regionMap.getTile(x, y) != 0)
                 continue;
 
-            std::queue<sf::Vector2i> toCheck;
+            std::queue<std::pair<int, int>> toCheck;
             toCheck.push({ (int)x, (int)y });
             regionMap.setTile(x, y, regionId);
 
@@ -297,7 +346,7 @@ void Generator::floodFillRegions(Map& map)
 
             while (!toCheck.empty())
             {
-                sf::Vector2i p = toCheck.front();
+                std::pair<int, int> p = toCheck.front();
                 toCheck.pop();
 
                 static const int dirX[] = { -1, 1, 0, 0 };
@@ -305,8 +354,8 @@ void Generator::floodFillRegions(Map& map)
 
                 for (int i = 0; i < 4; ++i)
                 {
-                    int nx = p.x + dirX[i];
-                    int ny = p.y + dirY[i];
+                    int nx = p.first + dirX[i];
+                    int ny = p.second + dirY[i];
 
                     if (nx < 0 || ny < 0 || nx >= (int)width || ny >= (int)height)
                         continue;
@@ -342,8 +391,8 @@ void Generator::floodFillRegions(Map& map)
         if (id == largestRegionId)
             continue;
 
-        for (const sf::Vector2i& p : tiles)
-            map.setTile(p.x, p.y, 1); // fill with wall
+        for (const std::pair<int, int>& p : tiles)
+            map.setTile(p.first, p.second, 1); // fill with wall
     }
 
     // Optional: connect other regions to main region (if desired)
@@ -352,27 +401,27 @@ void Generator::floodFillRegions(Map& map)
         if (id == largestRegionId)
             continue;
 
-        sf::Vector2i from = tiles[std::rand() % tiles.size()];
+        std::pair<int, int> from = tiles[std::rand() % tiles.size()];
         // pick a random tile in the isolated region
-        sf::Vector2i to = regions[largestRegionId][std::rand() % regions[largestRegionId].size()];
+        std::pair<int, int> to = regions[largestRegionId][std::rand() % regions[largestRegionId].size()];
         connectPoints(map, from, to);
     }
 }
 
-void Generator::connectPoints(Map& map, const sf::Vector2i& a, const sf::Vector2i& b)
+void Generator::connectPoints(Map& map, const std::pair<int,int>& pointA, const std::pair<int, int>& pointB)
 {
-    sf::Vector2i current = a;
+    std::pair<int, int> current = pointA;
 
-    while (current.x != b.x)
+    while (current.first != pointB.first)
     {
-        map.setTile(current.x, current.y, 0);
-        current.x += (b.x > current.x) ? 1 : -1;
+        map.setTile(current.first, current.second, 0);
+        current.first += (pointB.first > current.first) ? 1 : -1;
     }
 
-    while (current.y != b.y)
+    while (current.second != pointB.second)
     {
-        map.setTile(current.x, current.y, 0);
-        current.y += (b.y > current.y) ? 1 : -1;
+        map.setTile(current.first, current.second, 0);
+        current.second += (pointB.second > current.second) ? 1 : -1;
     }
 }
 
@@ -382,8 +431,8 @@ void Generator::generateWFC(Map& map)
 {
     loadPatterns();
 
-    int width = map.GetWidth();
-    int height = map.GetHeight();
+    int width = map.getWidth();
+    int height = map.getHeight();
     std::vector<std::vector<std::vector<int>>> wave(width, std::vector<std::vector<int>>(height));
 
     // Initialize wave with all possible pattern IDs
@@ -562,3 +611,5 @@ void Generator::loadPatterns()
     }, {{1,2,3,8},{1,2,3,8},{1,2,3,8},{1,2,3,8}} });
     // Add more patterns with compatible allowedNeighbors
 }
+
+#pragma endregion

@@ -1,0 +1,13 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles\DungeonForgeLib.dir\src\Generator.cpp.obj: dyndep
+
+build CMakeFiles\DungeonForgeLib.dir\src\Map.cpp.obj: dyndep
+
+build CMakeFiles\DungeonForgeLib.dir\src\MyClass.cpp.obj: dyndep
+
+build CMakeFiles\DungeonForgeLib.dir\src\Renderer.cpp.obj: dyndep
+
+build CMakeFiles\DungeonForgeLib.dir\src\imgui-SFML.cpp.obj: dyndep
+
+build CMakeFiles\DungeonForgeLib.dir\src\main.cpp.obj: dyndep
+

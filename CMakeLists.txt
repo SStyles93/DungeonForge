@@ -30,12 +30,20 @@ target_link_libraries(TestApp PUBLIC nlohmann_json::nlohmann_json)
 target_link_libraries(TestApp PUBLIC ImGui-SFML::ImGui-SFML)
 
 
-if(ENABLE_PROFILER)
-target_link_libraries(TestApp PUBLIC TracyClient)
-target_compile_definitions(TestApp PUBLIC TRACY_ENABLE)
-endif()
-target_include_directories(TestApp PUBLIC ${Stb_INCLUDE_DIR})
-target_include_directories(TestApp PUBLIC include/)
+SET(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+include_directories(include/)
+file(GLOB_RECURSE LIB_FILES src/*.cpp include/*.hpp)
+add_library(DungeonForgeLib SHARED ${LIB_FILES})
+include(GenerateExportHeader)
+generate_export_header(DungeonForgeLib)
+
+##DEBUG
+#if(ENABLE_PROFILER)
+#target_link_libraries(TestApp PUBLIC TracyClient)
+#target_compile_definitions(TestApp PUBLIC TRACY_ENABLE)
+#endif()
+#target_include_directories(TestApp PUBLIC ${Stb_INCLUDE_DIR})
+#target_include_directories(TestApp PUBLIC include/)
 
 #TESTS
 #add_executable(Tests tests/tests.cpp src/Camera.cpp include/Camera.hpp src/DungeonForge.cpp include/DungeonForge.hpp src/Scene.cpp include/Scene.hpp)

@@ -1,0 +1,13 @@
+C:/00_Dev/DungeonForge/out/build/x64-Debug/CMakeFiles/TestApp.dir
+C:/00_Dev/DungeonForge/out/build/x64-Debug/CMakeFiles/DungeonForgeLib.dir
+C:/00_Dev/DungeonForge/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/00_Dev/DungeonForge/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
+C:/00_Dev/DungeonForge/out/build/x64-Debug/CMakeFiles/list_install_components.dir
+C:/00_Dev/DungeonForge/out/build/x64-Debug/CMakeFiles/install.dir
+C:/00_Dev/DungeonForge/out/build/x64-Debug/CMakeFiles/install/local.dir
+C:/00_Dev/DungeonForge/out/build/x64-Debug/external/tracy/CMakeFiles/TracyClient.dir
+C:/00_Dev/DungeonForge/out/build/x64-Debug/external/tracy/CMakeFiles/edit_cache.dir
+C:/00_Dev/DungeonForge/out/build/x64-Debug/external/tracy/CMakeFiles/rebuild_cache.dir
+C:/00_Dev/DungeonForge/out/build/x64-Debug/external/tracy/CMakeFiles/list_install_components.dir
+C:/00_Dev/DungeonForge/out/build/x64-Debug/external/tracy/CMakeFiles/install.dir
+C:/00_Dev/DungeonForge/out/build/x64-Debug/external/tracy/CMakeFiles/install/local.dir

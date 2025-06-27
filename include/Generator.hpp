@@ -1,6 +1,7 @@
 ﻿#pragma once
+#include "dllexport.h"
 #include "Map.hpp"
-#include <SFML/Graphics.hpp>
+//#include <SFML/Graphics.hpp>
 #include <algorithm>
 #include <cmath>
 #include <cstdlib>  // for std::rand
@@ -11,26 +12,26 @@
 
 enum AlgorithmType
 {
-    Perlin,
-    DrunkardsWalk,
     BinarySpacePartitioning,
     CellularAutomata,
+    DrunkardsWalk,
+    Perlin,
     WaveFunctionCollapse
 };
 
 class Generator
 {
 public:
+    Generator(unsigned int width, unsigned int height);
+
+    void generate();
+
     
-    Generator(Map& map);
+    Map& getMap();
 
-    void Generate();
-
-    
-    Map GetMap();
-
-    void SetAlgorithm(AlgorithmType type);
-    void SetMap(Map& map);
+    void setAlgorithm(AlgorithmType type);
+    int getAlgorithm();
+    void setMap(Map& map);
 
 private:
     struct Rect
@@ -42,7 +43,8 @@ private:
     Map m_map;
     AlgorithmType m_algorithmType = AlgorithmType::Perlin;
 
-    //Algorithms
+    // Algorithms
+
     void generatePerlin(Map& map);
     void generateDrunkardsWalk(Map& map);
     void generateBSP(Map& map);
@@ -50,16 +52,19 @@ private:
     void generateWFC(Map& map);
 
     //BSP
+
     void splitSpace(std::vector<Rect>& spaces, int maxLeafSize);
     void createRoom(Map& map, const Rect& room);
-    void connectRooms(Map& map, const sf::Vector2i& pointA, const sf::Vector2i& pointB);
+    void connectRooms(Map& map, const std::pair<int,int>& pointA, const std::pair<int, int>& pointB);
 
     //Cellular Automata
+    
     void floodFillRegions(Map& map);
-    void connectPoints(Map& map, const sf::Vector2i& a, const sf::Vector2i& b);
+    void connectPoints(Map& map, const std::pair<int, int>& pointA, const std::pair<int, int>& pointB);
 
     
     //WaveFunctionCollapse
+    
     struct Pattern
     {
         int id;
@@ -76,3 +81,21 @@ private:
     void collapseCell(std::vector<std::vector<std::vector<int>>>& wave, int x, int y);
 
 };
+
+extern "C" 
+{
+    PXP_DF_API Generator* CreateGenerator(unsigned int width, unsigned int height);
+
+    PXP_DF_API void DeleteGenerator(Generator* instance);
+    
+
+    PXP_DF_API void Generate(Generator* instance);
+
+    PXP_DF_API Map& GetMap(Generator* instance);
+
+    PXP_DF_API int GetTile(Generator* instance, unsigned int x, unsigned int y);
+
+    PXP_DF_API void SetAlgorithm(Generator* instance, int type);
+
+    PXP_DF_API int GetAlgorithm(Generator* instance, int type);
+}

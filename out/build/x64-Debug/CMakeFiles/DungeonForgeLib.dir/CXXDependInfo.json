@@ -1,0 +1,55 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "MSVC",
+	"compiler-id" : "MSVC",
+	"compiler-simulate-id" : "",
+	"config" : "Debug",
+	"cxx-modules" : {},
+	"database-info" : null,
+	"dir-cur-bld" : "C:/00_Dev/DungeonForge/out/build/x64-Debug",
+	"dir-cur-src" : "C:/00_Dev/DungeonForge",
+	"dir-top-bld" : "C:/00_Dev/DungeonForge/out/build/x64-Debug",
+	"dir-top-src" : "C:/00_Dev/DungeonForge",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : 
+	[
+		"C:\\00_Dev\\DungeonForge\\include"
+	],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "C:/00_Dev/DungeonForge/out/build/x64-Debug/CMakeFiles/DungeonForgeLib.dir",
+	"sources" : 
+	{
+		"CMakeFiles/DungeonForgeLib.dir/src/Generator.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/00_Dev/DungeonForge/src/Generator.cpp"
+		},
+		"CMakeFiles/DungeonForgeLib.dir/src/Map.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/00_Dev/DungeonForge/src/Map.cpp"
+		},
+		"CMakeFiles/DungeonForgeLib.dir/src/MyClass.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/00_Dev/DungeonForge/src/MyClass.cpp"
+		},
+		"CMakeFiles/DungeonForgeLib.dir/src/Renderer.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/00_Dev/DungeonForge/src/Renderer.cpp"
+		},
+		"CMakeFiles/DungeonForgeLib.dir/src/imgui-SFML.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/00_Dev/DungeonForge/src/imgui-SFML.cpp"
+		},
+		"CMakeFiles/DungeonForgeLib.dir/src/main.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/00_Dev/DungeonForge/src/main.cpp"
+		}
+	}
+}
