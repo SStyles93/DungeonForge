@@ -1,9 +1,0 @@
-ninja_dyndep_version = 1.0
-build CMakeFiles\TestApp.dir\src\Generator.cpp.obj: dyndep
-
-build CMakeFiles\TestApp.dir\src\Map.cpp.obj: dyndep
-
-build CMakeFiles\TestApp.dir\src\MyClass.cpp.obj: dyndep
-
-build CMakeFiles\TestApp.dir\src\main.cpp.obj: dyndep
-

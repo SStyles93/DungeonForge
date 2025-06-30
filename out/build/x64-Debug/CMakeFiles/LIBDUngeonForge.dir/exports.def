@@ -1,7 +1,0 @@
-EXPORTS 
-	??0MyClass@@QEAA@XZ
-	?TestMethod@MyClass@@QEAAXXZ
-	createMyClass
-	deleteMyClass
-	getInt
-	testMethod
