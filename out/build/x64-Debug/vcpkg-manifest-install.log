@@ -1,26 +1,166 @@
 Detecting compiler hash for triplet x64-windows...
 Compiler found: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe
 The following packages are already installed:
-  * brotli:x64-windows@1.1.0#1
-  * bzip2[core,tool]:x64-windows@1.0.8#6
-  * egl-registry:x64-windows@2024-01-25
     fmt:x64-windows@11.0.2#1
-  * freetype[brotli,bzip2,core,png,zlib]:x64-windows@2.13.3
-    imgui:x64-windows@1.91.9
-    imgui-sfml:x64-windows@3.0#1
-  * libflac[core,stack-protector]:x64-windows@1.5.0
-  * libogg:x64-windows@1.3.5#2
-  * libpng:x64-windows@1.6.47
-  * libvorbis:x64-windows@1.3.7#4
-  * miniaudio:x64-windows@0.11.22
     nlohmann-json:x64-windows@3.12.0
-  * opengl:x64-windows@2022-12-04#3
-  * opengl-registry:x64-windows@2024-02-10#1
-    sfml[audio,core,graphics,network,window]:x64-windows@3.0.0#1
-  * stb:x64-windows@2024-07-29#1
   * vcpkg-cmake:x64-windows@2024-04-23
   * vcpkg-cmake-config:x64-windows@2024-05-23
-  * zlib:x64-windows@1.3.1
+The following packages will be removed:
+    brotli:x64-windows
+    bzip2:x64-windows
+    egl-registry:x64-windows
+    freetype:x64-windows
+    imgui-sfml:x64-windows
+    libflac:x64-windows
+    libogg:x64-windows
+    libpng:x64-windows
+    libvorbis:x64-windows
+    miniaudio:x64-windows
+    opengl:x64-windows
+    opengl-registry:x64-windows
+    sfml:x64-windows
+    stb:x64-windows
+    zlib:x64-windows
+The following packages will be rebuilt:
+    imgui[core,docking-experimental,opengl3-binding,sdl3-binding]:x64-windows@1.91.9
+The following packages will be built and installed:
+    sdl3:x64-windows@3.2.14
+Restored 2 package(s) from C:\Users\SSTYLES\AppData\Local\vcpkg\archives in 166 ms. Use --debug to see more details.
+Removing 1/18 imgui-sfml:x64-windows
+Elapsed time to handle imgui-sfml:x64-windows: 5.97 ms
+Removing 2/18 sfml:x64-windows
+Elapsed time to handle sfml:x64-windows: 36.4 ms
+Removing 3/18 libflac:x64-windows
+Elapsed time to handle libflac:x64-windows: 13.4 ms
+Removing 4/18 libvorbis:x64-windows
+Elapsed time to handle libvorbis:x64-windows: 8.31 ms
+Removing 5/18 libogg:x64-windows
+Elapsed time to handle libogg:x64-windows: 5.95 ms
+Removing 6/18 miniaudio:x64-windows
+Elapsed time to handle miniaudio:x64-windows: 3.05 ms
+Removing 7/18 freetype:x64-windows
+Elapsed time to handle freetype:x64-windows: 19.1 ms
+Removing 8/18 brotli:x64-windows
+Elapsed time to handle brotli:x64-windows: 9.8 ms
+Removing 9/18 bzip2:x64-windows
+Elapsed time to handle bzip2:x64-windows: 7.89 ms
+Removing 10/18 libpng:x64-windows
+Elapsed time to handle libpng:x64-windows: 8.11 ms
+Removing 11/18 zlib:x64-windows
+Elapsed time to handle zlib:x64-windows: 8.2 ms
+Removing 12/18 stb:x64-windows
+Elapsed time to handle stb:x64-windows: 5.89 ms
+Removing 13/18 opengl:x64-windows
+Elapsed time to handle opengl:x64-windows: 5.66 ms
+Removing 14/18 opengl-registry:x64-windows
+Elapsed time to handle opengl-registry:x64-windows: 11.1 ms
+Removing 15/18 egl-registry:x64-windows
+Elapsed time to handle egl-registry:x64-windows: 4.2 ms
+Removing 16/18 imgui:x64-windows
+Elapsed time to handle imgui:x64-windows: 5.85 ms
+Installing 17/18 sdl3:x64-windows@3.2.14...
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\bin/SDL3.dll was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\bin/SDL3.pdb was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\debug/bin/SDL3.dll was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\debug/bin/SDL3.pdb was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\debug/lib/pkgconfig/sdl3.pc was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\debug/lib/SDL3.lib was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\debug/licenses/SDL3/LICENSE.txt was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_assert.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_asyncio.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_atomic.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_audio.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_begin_code.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_bits.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_blendmode.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_camera.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_clipboard.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_close_code.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_copying.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_cpuinfo.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_dialog.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_egl.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_endian.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_error.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_events.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_filesystem.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_gamepad.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_gpu.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_guid.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_haptic.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_hidapi.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_hints.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_init.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_intrin.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_iostream.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_joystick.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_keyboard.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_keycode.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_loadso.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_locale.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_log.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_main.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_main_impl.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_messagebox.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_metal.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_misc.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_mouse.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_mutex.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_oldnames.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_opengl.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_opengles.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_opengles2.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_opengles2_gl2.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_opengles2_gl2ext.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_opengles2_gl2platform.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_opengles2_khrplatform.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_opengl_glext.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_pen.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_pixels.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_platform.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_platform_defines.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_power.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_process.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_properties.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_rect.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_render.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_revision.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_scancode.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_sensor.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_stdinc.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_storage.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_surface.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_system.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_thread.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_time.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_timer.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_touch.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_tray.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_version.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_video.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/SDL3/SDL_vulkan.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\lib/pkgconfig/sdl3.pc was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\lib/SDL3.lib was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\licenses/SDL3/LICENSE.txt was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\share/sdl3/copyright was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\share/sdl3/SDL3Config.cmake was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\share/sdl3/SDL3ConfigVersion.cmake was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\share/sdl3/SDL3headersTargets.cmake was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\share/sdl3/SDL3sharedTargets-debug.cmake was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\share/sdl3/SDL3sharedTargets-release.cmake was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\share/sdl3/SDL3sharedTargets.cmake was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\share/sdl3/usage was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\share/sdl3/vcpkg.spdx.json was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\share/sdl3/vcpkg_abi_info.txt was already present and will be overwritten
+Elapsed time to handle sdl3:x64-windows: 107 ms
+sdl3:x64-windows package ABI: 18c9032a6c85d70cca40cf2cf831d1bf469bdac29c08ca924782b59f1408f414
+Installing 18/18 imgui[core,docking-experimental,opengl3-binding,sdl3-binding]:x64-windows@1.91.9...
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/imgui_impl_opengl3.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/imgui_impl_opengl3_loader.h was already present and will be overwritten
+warning: File C:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include/imgui_impl_sdl3.h was already present and will be overwritten
+Elapsed time to handle imgui:x64-windows: 13.4 ms
+imgui:x64-windows package ABI: d775f683f624982527f56bba6fa8ed2a6531d69a3793bf837a67a9b59f11de38
 The package fmt provides CMake targets:
 
     find_package(fmt CONFIG REQUIRED)
@@ -30,24 +170,16 @@ The package fmt provides CMake targets:
     find_package(fmt CONFIG REQUIRED)
     target_link_libraries(main PRIVATE fmt::fmt-header-only)
 
+sdl3 provides CMake targets:
+
+  find_package(SDL3 CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE SDL3::SDL3)
+
 imgui provides CMake targets:
 
   # this is heuristically generated, and may not be correct
   find_package(imgui CONFIG REQUIRED)
   target_link_libraries(main PRIVATE imgui::imgui)
-
-The package sfml provides CMake targets:
-
-    find_package(SFML COMPONENTS Network Graphics Window Audio System CONFIG REQUIRED)
-    target_link_libraries(main PRIVATE SFML::Network SFML::Graphics SFML::Window SFML::Audio SFML::System)
-
-    # If you want SFML to provide an implementation of main():
-    target_link_libraries(main PRIVATE SFML::Main)
-
-imgui-sfml provides CMake targets:
-
-    find_package(ImGui-SFML CONFIG REQUIRED)
-    target_link_libraries(main PRIVATE ImGui-SFML::ImGui-SFML)
 
 The package nlohmann-json provides CMake targets:
 
@@ -62,4 +194,4 @@ For more information, see the docs here:
     
     https://json.nlohmann.me/api/macros/json_use_implicit_conversions/
 
-All requested installations completed successfully in: 877 us
+All requested installations completed successfully in: 293 ms
