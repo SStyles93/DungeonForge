@@ -37,16 +37,6 @@
 			"language" : "CXX",
 			"source" : "C:/00_Dev/DungeonForge/src/MyClass.cpp"
 		},
-		"CMakeFiles/TestApp.dir/src/Renderer.cpp.obj" : 
-		{
-			"language" : "CXX",
-			"source" : "C:/00_Dev/DungeonForge/src/Renderer.cpp"
-		},
-		"CMakeFiles/TestApp.dir/src/imgui-SFML.cpp.obj" : 
-		{
-			"language" : "CXX",
-			"source" : "C:/00_Dev/DungeonForge/src/imgui-SFML.cpp"
-		},
 		"CMakeFiles/TestApp.dir/src/main.cpp.obj" : 
 		{
 			"language" : "CXX",

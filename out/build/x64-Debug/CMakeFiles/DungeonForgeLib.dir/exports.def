@@ -38,6 +38,7 @@ EXPORTS
 	??$?0V?$tuple@AEBH@std@@V?$tuple@$$V@1@$0A@$$Z$S@?$pair@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@std@@AEAA@AEAV?$tuple@AEBH@1@AEAV?$tuple@$$V@1@U?$integer_sequence@_K$0A@@1@U?$integer_sequence@_K$S@1@@Z
 	??$?0V?$vector@HV?$allocator@H@std@@@std@@@?$allocator@U_Container_proxy@std@@@std@@QEAA@AEBV?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@1@@Z
 	??$?0V?$vector@V?$vector@HV?$allocator@H@std@@@std@@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@@?$allocator@U_Container_proxy@std@@@std@@QEAA@AEBV?$allocator@V?$vector@V?$vector@HV?$allocator@H@std@@@std@@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@@1@@Z
+	??$?0_J$0A@@?$duration@_JU?$ratio@$00$0JIJGIA@@std@@@chrono@std@@QEAA@AEB_J@Z
 	??$?4U?$pair@HH@std@@$0A@@?$pair@HH@std@@QEAAAEAU01@AEBU01@@Z
 	??$_Adl_verify_range@PEAPEAU?$pair@HH@std@@PEAPEAU12@@std@@YAXAEBQEAPEAU?$pair@HH@0@0@Z
 	??$_Adl_verify_range@V?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@H@std@@@std@@@std@@V12@@std@@YAXAEBV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@H@std@@@std@@@0@0@Z
@@ -159,6 +160,8 @@ EXPORTS
 	??$_Get_unwrapped@PEBH@std@@YA?A_T$$QEAPEBH@Z
 	??$_Get_unwrapped@PEBU?$pair@HH@std@@@std@@YA?A_T$$QEAPEBU?$pair@HH@0@@Z
 	??$_Get_unwrapped_n@AEAPEAPEAU?$pair@HH@std@@_J@std@@YA?A_TAEAPEAPEAU?$pair@HH@0@_J@Z
+	??$_Getvals@_W@?$time_get@DV?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@@std@@IEAAX_WAEBV_Locinfo@1@@Z
+	??$_Getvals@_W@?$time_get@_WV?$istreambuf_iterator@_WU?$char_traits@_W@std@@@std@@@std@@IEAAX_WAEBV_Locinfo@1@@Z
 	??$_Idl_distance@PEAPEAU?$pair@HH@std@@PEAPEAU12@@std@@YA?A_PAEBQEAPEAU?$pair@HH@0@0@Z
 	??$_Is_all_bits_zero@H@std@@YA_NAEBH@Z
 	??$_Kfn@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@?$_Tmap_traits@HV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@U?$less@H@2@V?$allocator@U?$pair@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@std@@@2@$0A@@std@@SAAEBHAEBU?$pair@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@1@@Z
@@ -327,7 +330,10 @@ EXPORTS
 	??0?$initializer_list@U?$pair@HH@std@@@std@@QEAA@PEBU?$pair@HH@1@0@Z
 	??0?$initializer_list@V?$vector@HV?$allocator@H@std@@@std@@@std@@QEAA@PEBV?$vector@HV?$allocator@H@std@@@1@0@Z
 	??0?$map@HV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@U?$less@H@2@V?$allocator@U?$pair@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@std@@@2@@std@@QEAA@XZ
+	??0?$mersenne_twister@I$0CA@$0CHA@$0BIN@$0BP@$0JJAILANP@$0L@$06$0JNCMFGIA@$0P@$0OPMGAAAA@$0BC@@std@@QEAA@III@Z
+	??0?$mersenne_twister_engine@I$0CA@$0CHA@$0BIN@$0BP@$0JJAILANP@$0L@$0PPPPPPPP@$06$0JNCMFGIA@$0P@$0OPMGAAAA@$0BC@$0GMAHIJGF@@std@@QEAA@XZ
 	??0?$queue@U?$pair@HH@std@@V?$deque@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@2@@std@@QEAA@XZ
+	??0?$time_point@Usystem_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0JIJGIA@@std@@@23@@chrono@std@@QEAA@AEBV?$duration@_JU?$ratio@$00$0JIJGIA@@std@@@12@@Z
 	??0?$tuple@$$V@std@@QEAA@AEBV01@@Z
 	??0?$tuple@AEBH@std@@QEAA@$$QEAV01@@Z
 	??0?$vector@HV?$allocator@H@std@@@std@@QEAA@$$QEAV01@@Z
@@ -417,6 +423,8 @@ EXPORTS
 	??E?$_Tree_unchecked_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@std@@@std@@@std@@U_Iterator_base0@2@@std@@QEAAAEAV01@XZ
 	??E?$_Tree_unchecked_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@std@@@std@@@std@@@std@@QEAAAEAV01@XZ
 	??R?$less@H@std@@QEBA_NAEBH0@Z
+	??R?$mersenne_twister@I$0CA@$0CHA@$0BIN@$0BP@$0JJAILANP@$0L@$06$0JNCMFGIA@$0P@$0OPMGAAAA@$0BC@@std@@QEAAIXZ
+	??R?$mersenne_twister_engine@I$0CA@$0CHA@$0BIN@$0BP@$0JJAILANP@$0L@$0PPPPPPPP@$06$0JNCMFGIA@$0P@$0OPMGAAAA@$0BC@$0GMAHIJGF@@std@@QEAAIXZ
 	??_7bad_alloc@std@@6B@
 	??_7bad_array_new_length@std@@6B@
 	??_7exception@std@@6B@
@@ -496,6 +504,7 @@ EXPORTS
 	?_Growmap@?$deque@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@AEAAX_K@Z
 	?_Insert_node@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@std@@@std@@@std@@QEAAPEAU?$_Tree_node@U?$pair@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@std@@PEAX@2@U?$_Tree_id@PEAU?$_Tree_node@U?$pair@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@std@@PEAX@std@@@2@QEAU32@@Z
 	?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@std@@@std@@@std@@QEAAXPEAU?$_Tree_node@U?$pair@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@std@@PEAX@2@@Z
+	?_Maklocwcs@std@@YAPEA_WPEB_W@Z
 	?_Map@?$deque@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@AEAAAEAPEAPEAU?$pair@HH@2@XZ
 	?_Map_distance@?$deque@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@AEBA_JXZ
 	?_Mapsize@?$deque@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@AEAAAEA_KXZ
@@ -523,6 +532,8 @@ EXPORTS
 	?_Orphan_range_unlocked@?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@AEBAXPEAU?$pair@HH@2@0@Z
 	?_Orphan_range_unlocked@?$vector@UPattern@Generator@@V?$allocator@UPattern@Generator@@@std@@@std@@AEBAXPEAUPattern@Generator@@0@Z
 	?_Orphan_range_unlocked@?$vector@URect@Generator@@V?$allocator@URect@Generator@@@std@@@std@@AEBAXPEAURect@Generator@@0@Z
+	?_Refill_lower@?$mersenne_twister@I$0CA@$0CHA@$0BIN@$0BP@$0JJAILANP@$0L@$06$0JNCMFGIA@$0P@$0OPMGAAAA@$0BC@@std@@IEAAXXZ
+	?_Refill_upper@?$mersenne_twister@I$0CA@$0CHA@$0BIN@$0BP@$0JJAILANP@$0L@$06$0JNCMFGIA@$0P@$0OPMGAAAA@$0BC@@std@@IEAAXXZ
 	?_Release@?$_Alloc_construct_ptr@V?$allocator@U?$_Tree_node@U?$pair@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@std@@PEAX@std@@@std@@@std@@QEAAPEAU?$_Tree_node@U?$pair@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@std@@PEAX@2@XZ
 	?_Release@?$_Uninitialized_backout@PEAPEAU?$pair@HH@std@@@std@@QEAAPEAPEAU?$pair@HH@2@XZ
 	?_Release@?$_Uninitialized_backout_al@V?$allocator@H@std@@@std@@QEAAPEAHXZ
@@ -568,6 +579,10 @@ EXPORTS
 	?_Xlength@?$vector@URect@Generator@@V?$allocator@URect@Generator@@@std@@@std@@CAXXZ
 	?_Xlength@?$vector@V?$vector@HV?$allocator@H@std@@@std@@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@CAXXZ
 	?_Xlength@?$vector@V?$vector@V?$vector@HV?$allocator@H@std@@@std@@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@V?$allocator@V?$vector@V?$vector@HV?$allocator@H@std@@@std@@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@@2@@std@@CAXXZ
+	?__empty_global_delete@@YAXPEAX@Z
+	?__empty_global_delete@@YAXPEAXW4align_val_t@std@@@Z
+	?__empty_global_delete@@YAXPEAX_K@Z
+	?__empty_global_delete@@YAXPEAX_KW4align_val_t@std@@@Z
 	?allocate@?$allocator@H@std@@QEAAPEAH_K@Z
 	?allocate@?$allocator@PEAU?$pair@HH@std@@@std@@QEAAPEAPEAU?$pair@HH@2@_K@Z
 	?allocate@?$allocator@U?$_Tree_node@U?$pair@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@std@@PEAX@std@@@std@@QEAAPEAU?$_Tree_node@U?$pair@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@std@@PEAX@2@_K@Z
@@ -589,6 +604,7 @@ EXPORTS
 	?collapseCell@Generator@@AEAAXAEAV?$vector@V?$vector@V?$vector@HV?$allocator@H@std@@@std@@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@V?$allocator@V?$vector@V?$vector@HV?$allocator@H@std@@@std@@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@@2@@std@@HH@Z
 	?connectPoints@Generator@@AEAAXAEAVMap@@AEBU?$pair@HH@std@@1@Z
 	?connectRooms@Generator@@AEAAXAEAVMap@@AEBU?$pair@HH@std@@1@Z
+	?count@?$duration@_JU?$ratio@$00$0JIJGIA@@std@@@chrono@std@@QEBA_JXZ
 	?createRoom@Generator@@AEAAXAEAVMap@@AEBURect@1@@Z
 	?deallocate@?$_Default_allocator_traits@V?$allocator@U?$_Tree_node@U?$pair@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@std@@PEAX@std@@@std@@@std@@SAXAEAV?$allocator@U?$_Tree_node@U?$pair@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@std@@PEAX@std@@@2@QEAU?$_Tree_node@U?$pair@$$CBHV?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@@std@@PEAX@2@_K@Z
 	?deallocate@?$_Default_allocator_traits@V?$allocator@U_Container_proxy@std@@@std@@@std@@SAXAEAV?$allocator@U_Container_proxy@std@@@2@QEAU_Container_proxy@2@_K@Z
@@ -614,6 +630,7 @@ EXPORTS
 	?generateCellularAutomata@Generator@@AEAAXAEAVMap@@HH@Z
 	?generateDrunkardsWalk@Generator@@AEAAXAEAVMap@@@Z
 	?generatePerlin@Generator@@AEAAXAEAVMap@@@Z
+	?generateSeed@Generator@@AEAAXXZ
 	?generateWFC@Generator@@AEAAXAEAVMap@@@Z
 	?getAlgorithm@Generator@@QEAAHXZ
 	?getHeight@Map@@QEBAIXZ
@@ -638,6 +655,7 @@ EXPORTS
 	?max_size@?$vector@URect@Generator@@V?$allocator@URect@Generator@@@std@@@std@@QEBA_KXZ
 	?max_size@?$vector@V?$vector@HV?$allocator@H@std@@@std@@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@QEBA_KXZ
 	?max_size@?$vector@V?$vector@V?$vector@HV?$allocator@H@std@@@std@@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@V?$allocator@V?$vector@V?$vector@HV?$allocator@H@std@@@std@@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@@2@@std@@QEBA_KXZ
+	?now@system_clock@chrono@std@@SA?AV?$time_point@Usystem_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0JIJGIA@@std@@@23@@23@XZ
 	?pop@?$queue@U?$pair@HH@std@@V?$deque@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@2@@std@@QEAAXXZ
 	?pop_back@?$deque@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@QEAAXXZ
 	?pop_front@?$deque@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@QEAAXXZ
@@ -649,10 +667,13 @@ EXPORTS
 	?push_back@?$vector@UPattern@Generator@@V?$allocator@UPattern@Generator@@@std@@@std@@QEAAX$$QEAUPattern@Generator@@@Z
 	?push_back@?$vector@URect@Generator@@V?$allocator@URect@Generator@@@std@@@std@@QEAAX$$QEAURect@Generator@@@Z
 	?push_back@?$vector@URect@Generator@@V?$allocator@URect@Generator@@@std@@@std@@QEAAXAEBURect@Generator@@@Z
+	?seed@?$mersenne_twister@I$0CA@$0CHA@$0BIN@$0BP@$0JJAILANP@$0L@$06$0JNCMFGIA@$0P@$0OPMGAAAA@$0BC@@std@@QEAAXII@Z
+	?seed@?$mersenne_twister_engine@I$0CA@$0CHA@$0BIN@$0BP@$0JJAILANP@$0L@$0PPPPPPPP@$06$0JNCMFGIA@$0P@$0OPMGAAAA@$0BC@$0GMAHIJGF@@std@@QEAAXI@Z
 	?select_on_container_copy_construction@?$_Default_allocator_traits@V?$allocator@H@std@@@std@@SA?AV?$allocator@H@2@AEBV32@@Z
 	?select_on_container_copy_construction@?$_Default_allocator_traits@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@std@@@std@@SA?AV?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@AEBV32@@Z
 	?setAlgorithm@Generator@@QEAAXW4AlgorithmType@@@Z
 	?setMap@Generator@@QEAAXAEAVMap@@@Z
+	?setSeed@Generator@@QEAAXH@Z
 	?setTile@Map@@QEAAXIIH@Z
 	?size@?$initializer_list@H@std@@QEBA_KXZ
 	?size@?$initializer_list@U?$pair@HH@std@@@std@@QEBA_KXZ
@@ -660,12 +681,14 @@ EXPORTS
 	?size@?$vector@HV?$allocator@H@std@@@std@@QEBA_KXZ
 	?size@?$vector@U?$pair@HH@std@@V?$allocator@U?$pair@HH@std@@@2@@std@@QEBA_KXZ
 	?splitSpace@Generator@@AEAAXAEAV?$vector@URect@Generator@@V?$allocator@URect@Generator@@@std@@@std@@H@Z
+	?time_since_epoch@?$time_point@Usystem_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0JIJGIA@@std@@@23@@chrono@std@@QEBA?AV?$duration@_JU?$ratio@$00$0JIJGIA@@std@@@23@XZ
 	?what@exception@std@@UEBAPEBDXZ
 	CreateGenerator
 	DeleteGenerator
 	Generate
-	GetAlgorithm
 	GetMap
 	GetTile
 	SetAlgorithm
+	SetSeed
 	main
+	wmemcpy

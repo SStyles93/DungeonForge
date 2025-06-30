@@ -141,7 +141,7 @@ CMAKE_INSTALL_SYSCONFDIR:PATH=etc
 CMAKE_LINKER:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/link.exe
 
 //make program
-CMAKE_MAKE_PROGRAM:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe
+CMAKE_MAKE_PROGRAM:FILEPATH=C:/PROGRA~1/MICROS~4/2022/COMMUN~1/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe
 
 //Flags used by the linker during the creation of modules during
 // all build types.
@@ -273,14 +273,14 @@ DungeonForge_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 DungeonForge_SOURCE_DIR:STATIC=C:/00_Dev/DungeonForge
 
-//No help, variable specified on the command line.
+//Enable Tracy Profiling
 ENABLE_PROFILER:BOOL=True
 
 //No help, variable specified on the command line.
 IMGUI_DIR:PATH=C:/00_Dev/DungeonForge/external/imgui
 
 //The directory containing a CMake configuration file for ImGui-SFML.
-ImGui-SFML_DIR:PATH=ImGui-SFML_DIR-NOTFOUND
+ImGui-SFML_DIR:PATH=C:/00_Dev/DungeonForge/out/build/x64-Debug/vcpkg_installed/x64-windows/share/imgui-sfml
 
 //The directory containing a CMake configuration file for SDL3.
 SDL3_DIR:PATH=C:/00_Dev/DungeonForge/out/build/x64-Debug/vcpkg_installed/x64-windows/share/sdl3
@@ -613,7 +613,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MT
 CMAKE_MT-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //noop for ranlib

@@ -2,11 +2,13 @@
 #include "dllexport.h"
 #include "Map.hpp"
 #include <algorithm>
+#include <chrono>
 #include <cmath>
 #include <cstdlib>  // for std::rand
 #include <ctime>
 #include <map>
 #include <queue>
+#include <random>
 #include <vector>
 
 enum AlgorithmType
@@ -31,6 +33,7 @@ public:
     void setAlgorithm(AlgorithmType type);
     int getAlgorithm();
     void setMap(Map& map);
+    void setSeed(int seed);
 
 private:
     struct Rect
@@ -41,6 +44,10 @@ private:
 
     Map m_map;
     AlgorithmType m_algorithmType = AlgorithmType::Perlin;
+    int m_seed = -1;
+    std::mt19937 m_randomGenerator;
+
+    void generateSeed();
 
     // Algorithms
 
@@ -95,4 +102,5 @@ extern "C"
 
     PXP_DF_API void SetAlgorithm(Generator* instance, int type);
 
+    PXP_DF_API void SetSeed(Generator* instance, int seed);
 }
