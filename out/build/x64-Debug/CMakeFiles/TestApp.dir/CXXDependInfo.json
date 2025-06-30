@@ -14,7 +14,6 @@
 	"forward-modules-from-target-dirs" : [],
 	"include-dirs" : 
 	[
-		"C:\\00_Dev\\DungeonForge\\include",
 		"vcpkg_installed\\x64-windows\\include"
 	],
 	"language" : "CXX",

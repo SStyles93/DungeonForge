@@ -30,12 +30,12 @@ target_link_libraries(TestApp PUBLIC nlohmann_json::nlohmann_json)
 target_link_libraries(TestApp PUBLIC ImGui-SFML::ImGui-SFML)
 
 
-SET(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
-include_directories(include/)
-file(GLOB_RECURSE LIB_FILES src/*.cpp include/*.hpp)
-add_library(DungeonForgeLib SHARED ${LIB_FILES})
-include(GenerateExportHeader)
-generate_export_header(DungeonForgeLib)
+#SET(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+#include_directories(include/)
+#file(GLOB_RECURSE LIB_FILES src/*.cpp include/*.hpp)
+#add_library(DungeonForgeLib SHARED ${LIB_FILES})
+#include(GenerateExportHeader)
+#generate_export_header(DungeonForgeLib)
 
 ##DEBUG
 #if(ENABLE_PROFILER)
