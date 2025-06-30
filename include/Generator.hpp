@@ -87,7 +87,6 @@ extern "C"
     PXP_DF_API Generator* CreateGenerator(unsigned int width, unsigned int height);
 
     PXP_DF_API void DeleteGenerator(Generator* instance);
-    
 
     PXP_DF_API void Generate(Generator* instance);
 
@@ -97,5 +96,4 @@ extern "C"
 
     PXP_DF_API void SetAlgorithm(Generator* instance, int type);
 
-    PXP_DF_API int GetAlgorithm(Generator* instance, int type);
 }

@@ -97,12 +97,6 @@ PXP_DF_API void SetAlgorithm(Generator* instance, int type)
     }
 }
 
-PXP_DF_API int GetAlgorithm(Generator* instance, int type)
-{
-    return instance ? instance->getAlgorithm() : -1;
-}
-
-#pragma region TODO
 
 
 
@@ -426,6 +420,7 @@ void Generator::connectPoints(Map& map, const std::pair<int,int>& pointA, const 
 }
 
 
+#pragma region TODO
 
 void Generator::generateWFC(Map& map)
 {
