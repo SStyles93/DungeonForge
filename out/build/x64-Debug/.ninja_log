@@ -1,20 +1,7 @@
 # ninja log v6
-11	94	7729929909957575	CMakeFiles/TestApp.dir/src/Map.cpp.obj.ddi	dc3753aac7b9f195
-162	193	7729879507318521	CMakeFiles/TestApp.dir/src/Generator.cpp.obj.modmap	629c4a0a813385a6
-1548	2249	7729879521179750	TestApp.exe	3c2acb4b9b123003
-309	565	7729862113136833	CMakeFiles/TestApp.dir/src/Map.cpp.obj	8de7a2f4af98c7c9
-8	159	7729929909912192	CMakeFiles/TestApp.dir/src/Generator.cpp.obj.ddi	dbf20ca8dd0b1f8b
-162	193	7729879507318521	CMakeFiles/TestApp.dir/CXX.dd	629c4a0a813385a6
-19	231	7729929910011187	CMakeFiles/TestApp.dir/src/imgui-SFML.cpp.obj.ddi	e5ea3884599b66b4
-16	154	7729929909967905	CMakeFiles/TestApp.dir/src/Renderer.cpp.obj.ddi	85efdfadff455acf
-22	179	7729929910072109	CMakeFiles/TestApp.dir/src/main.cpp.obj.ddi	7bd0c4303e423709
-162	193	7729879507318521	CMakeFiles/TestApp.dir/src/Map.cpp.obj.modmap	629c4a0a813385a6
-162	193	7729879507318521	C:/00_Dev/DungeonForge/out/build/x64-Debug/CMakeFiles/TestApp.dir/CXXModules.json	629c4a0a813385a6
-162	193	7729879507318521	CMakeFiles/TestApp.dir/src/Renderer.cpp.obj.modmap	629c4a0a813385a6
-162	193	7729879507318521	CMakeFiles/TestApp.dir/src/imgui-SFML.cpp.obj.modmap	629c4a0a813385a6
-162	193	7729879507318521	CMakeFiles/TestApp.dir/src/main.cpp.obj.modmap	629c4a0a813385a6
-315	1593	7729862113202127	CMakeFiles/TestApp.dir/src/Renderer.cpp.obj	38c7472cd7277f58
-197	1461	7729879507673692	CMakeFiles/TestApp.dir/src/main.cpp.obj	f46e028cc5cc9dd2
-194	1548	7729879507643761	CMakeFiles/TestApp.dir/src/Generator.cpp.obj	2139ef9c79f72696
-321	1739	7729862113263954	CMakeFiles/TestApp.dir/src/imgui-SFML.cpp.obj	488e5486b9cca4e9
-9	3063	7729930381773618	build.ninja	becaff1b62023bf1
+20	222	7729931519720982	CMakeFiles/DFGen.dir/src/imgui-SFML.cpp.obj.ddi	34393d0a9b9bd7ee
+29	247	7729931519797381	external/tracy/CMakeFiles/TracyClient.dir/public/TracyClient.cpp.obj.ddi	68610c96952dfeab
+31	64	7729932101022751	external/tracy/CMakeFiles/TracyClient.dir/CXX.dd	263d7fe73bf8b124
+31	64	7729932101022751	C:/00_Dev/DungeonForge/out/build/x64-Debug/external/tracy/CMakeFiles/TracyClient.dir/CXXModules.json	263d7fe73bf8b124
+31	64	7729932101022751	external/tracy/CMakeFiles/TracyClient.dir/public/TracyClient.cpp.obj.modmap	263d7fe73bf8b124
+21	227	7729932100694950	CMakeFiles/DFGen.dir/src/imgui-SFML.cpp.obj.ddi	34393d0a9b9bd7ee

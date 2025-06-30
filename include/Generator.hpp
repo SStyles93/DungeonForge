@@ -90,19 +90,3 @@ private:
     void collapseCell(std::vector<std::vector<std::vector<int>>>& wave, int x, int y);
 
 };
-//
-//extern "C" 
-//{
-//    PXP_DF_API Generator* CreateGenerator(unsigned int width, unsigned int height);
-//
-//    PXP_DF_API void DeleteGenerator(Generator* instance);
-//
-//    PXP_DF_API void Generate(Generator* instance);
-//
-//    PXP_DF_API Map& GetMap(Generator* instance);
-//
-//    PXP_DF_API int GetTile(Generator* instance, unsigned int x, unsigned int y);
-//
-//    PXP_DF_API void SetAlgorithm(Generator* instance, int type);
-//
-//}
