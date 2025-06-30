@@ -59,6 +59,11 @@ int main()
 			Map map(map_size[0], map_size[1]);
 			m_randomGenerator.getMap();
 		}
+		ImGui::Text("Seed");
+		int *seed = 0;
+		ImGui::InputInt("", seed);
+		if (*seed < -1) *seed = -1;
+		if (*seed > INT32_MAX) *seed = INT32_MAX;
 
 
 

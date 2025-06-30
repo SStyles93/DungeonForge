@@ -16,11 +16,11 @@ find_package(SFML COMPONENTS Graphics CONFIG REQUIRED)
 #find_package(benchmark CONFIG REQUIRED)
 
 
-#TRACY
-option(ENABLE_PROFILER "Enable Tracy Profiling" OFF)
-if(ENABLE_PROFILER)
-add_subdirectory(external/tracy)
-endif()
+##TRACY
+#option(ENABLE_PROFILER "Enable Tracy Profiling" OFF)
+#if(ENABLE_PROFILER)
+#add_subdirectory(external/tracy)
+#endif()
 
 #PROGRAM FILES
 file(GLOB_RECURSE SRC_FILES src/*.cpp include/*.hpp)
@@ -28,14 +28,6 @@ add_executable(DFGen ${SRC_FILES})
 target_link_libraries(DFGen PUBLIC fmt::fmt)
 target_link_libraries(DFGen PUBLIC nlohmann_json::nlohmann_json)
 target_link_libraries(DFGen PUBLIC ImGui-SFML::ImGui-SFML)
-
-
-#SET(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
-#include_directories(include/)
-#file(GLOB_RECURSE LIB_FILES src/*.cpp include/*.hpp)
-#add_library(DungeonForgeLib SHARED ${LIB_FILES})
-#include(GenerateExportHeader)
-#generate_export_header(DungeonForgeLib)
 
 ##DEBUG
 #if(ENABLE_PROFILER)
