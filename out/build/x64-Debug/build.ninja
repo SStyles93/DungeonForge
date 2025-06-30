@@ -89,26 +89,6 @@ build CMakeFiles\TestApp.dir\src\Map.cpp.obj: CXX_COMPILER__TestApp_scanned_Debu
   TARGET_PDB = TestApp.pdb
   dyndep = CMakeFiles/TestApp.dir/CXX.dd
 
-build CMakeFiles\TestApp.dir\src\MyClass.cpp.obj.ddi: CXX_SCAN__TestApp_Debug C$:\00_Dev\DungeonForge\src\MyClass.cpp || cmake_object_order_depends_target_TestApp
-  DEFINES = -DFMT_SHARED -DIMGUI_USER_CONFIG=\"imconfig-SFML.h\"
-  DEP_FILE = CMakeFiles\TestApp.dir\src\MyClass.cpp.obj.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\TestApp.dir\src\MyClass.cpp.obj.ddi
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++20 -MDd -Zi /utf-8
-  INCLUDES = -IC:\00_Dev\DungeonForge\include -external:IC:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include -external:W0
-  OBJ_FILE = CMakeFiles\TestApp.dir\src\MyClass.cpp.obj
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles\TestApp.dir\src\MyClass.cpp.obj.ddi.i
-
-build CMakeFiles\TestApp.dir\src\MyClass.cpp.obj: CXX_COMPILER__TestApp_scanned_Debug C$:\00_Dev\DungeonForge\src\MyClass.cpp | CMakeFiles\TestApp.dir\src\MyClass.cpp.obj.modmap || cmake_object_order_depends_target_TestApp CMakeFiles\TestApp.dir\CXX.dd
-  DEFINES = -DFMT_SHARED -DIMGUI_USER_CONFIG=\"imconfig-SFML.h\"
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles\TestApp.dir\src\MyClass.cpp.obj.modmap
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++20 -MDd -Zi /utf-8
-  INCLUDES = -IC:\00_Dev\DungeonForge\include -external:IC:\00_Dev\DungeonForge\out\build\x64-Debug\vcpkg_installed\x64-windows\include -external:W0
-  OBJECT_DIR = CMakeFiles\TestApp.dir
-  OBJECT_FILE_DIR = CMakeFiles\TestApp.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\TestApp.dir\
-  TARGET_PDB = TestApp.pdb
-  dyndep = CMakeFiles/TestApp.dir/CXX.dd
-
 build CMakeFiles\TestApp.dir\src\Renderer.cpp.obj.ddi: CXX_SCAN__TestApp_Debug C$:\00_Dev\DungeonForge\src\Renderer.cpp || cmake_object_order_depends_target_TestApp
   DEFINES = -DFMT_SHARED -DIMGUI_USER_CONFIG=\"imconfig-SFML.h\"
   DEP_FILE = CMakeFiles\TestApp.dir\src\Renderer.cpp.obj.ddi.d
@@ -169,7 +149,7 @@ build CMakeFiles\TestApp.dir\src\main.cpp.obj: CXX_COMPILER__TestApp_scanned_Deb
   TARGET_PDB = TestApp.pdb
   dyndep = CMakeFiles/TestApp.dir/CXX.dd
 
-build CMakeFiles\TestApp.dir\CXX.dd | C$:\00_Dev\DungeonForge\out\build\x64-Debug\CMakeFiles\TestApp.dir\CXXModules.json CMakeFiles\TestApp.dir\src\Generator.cpp.obj.modmap CMakeFiles\TestApp.dir\src\Map.cpp.obj.modmap CMakeFiles\TestApp.dir\src\MyClass.cpp.obj.modmap CMakeFiles\TestApp.dir\src\Renderer.cpp.obj.modmap CMakeFiles\TestApp.dir\src\imgui-SFML.cpp.obj.modmap CMakeFiles\TestApp.dir\src\main.cpp.obj.modmap: CXX_DYNDEP__TestApp_Debug CMakeFiles\TestApp.dir\src\Generator.cpp.obj.ddi CMakeFiles\TestApp.dir\src\Map.cpp.obj.ddi CMakeFiles\TestApp.dir\src\MyClass.cpp.obj.ddi CMakeFiles\TestApp.dir\src\Renderer.cpp.obj.ddi CMakeFiles\TestApp.dir\src\imgui-SFML.cpp.obj.ddi CMakeFiles\TestApp.dir\src\main.cpp.obj.ddi | C$:\00_Dev\DungeonForge\out\build\x64-Debug\CMakeFiles\TestApp.dir\CXXDependInfo.json
+build CMakeFiles\TestApp.dir\CXX.dd | C$:\00_Dev\DungeonForge\out\build\x64-Debug\CMakeFiles\TestApp.dir\CXXModules.json CMakeFiles\TestApp.dir\src\Generator.cpp.obj.modmap CMakeFiles\TestApp.dir\src\Map.cpp.obj.modmap CMakeFiles\TestApp.dir\src\Renderer.cpp.obj.modmap CMakeFiles\TestApp.dir\src\imgui-SFML.cpp.obj.modmap CMakeFiles\TestApp.dir\src\main.cpp.obj.modmap: CXX_DYNDEP__TestApp_Debug CMakeFiles\TestApp.dir\src\Generator.cpp.obj.ddi CMakeFiles\TestApp.dir\src\Map.cpp.obj.ddi CMakeFiles\TestApp.dir\src\Renderer.cpp.obj.ddi CMakeFiles\TestApp.dir\src\imgui-SFML.cpp.obj.ddi CMakeFiles\TestApp.dir\src\main.cpp.obj.ddi | C$:\00_Dev\DungeonForge\out\build\x64-Debug\CMakeFiles\TestApp.dir\CXXDependInfo.json
 
 
 # =============================================================================
@@ -179,7 +159,7 @@ build CMakeFiles\TestApp.dir\CXX.dd | C$:\00_Dev\DungeonForge\out\build\x64-Debu
 #############################################
 # Link the executable TestApp.exe
 
-build TestApp.exe: CXX_EXECUTABLE_LINKER__TestApp_Debug CMakeFiles\TestApp.dir\src\Generator.cpp.obj CMakeFiles\TestApp.dir\src\Map.cpp.obj CMakeFiles\TestApp.dir\src\MyClass.cpp.obj CMakeFiles\TestApp.dir\src\Renderer.cpp.obj CMakeFiles\TestApp.dir\src\imgui-SFML.cpp.obj CMakeFiles\TestApp.dir\src\main.cpp.obj | vcpkg_installed\x64-windows\debug\lib\fmtd.lib vcpkg_installed\x64-windows\debug\lib\ImGui-SFML_d.lib vcpkg_installed\x64-windows\debug\lib\imguid.lib vcpkg_installed\x64-windows\debug\lib\sfml-graphics-d.lib vcpkg_installed\x64-windows\debug\lib\sfml-window-d.lib vcpkg_installed\x64-windows\debug\lib\sfml-system-d.lib
+build TestApp.exe: CXX_EXECUTABLE_LINKER__TestApp_Debug CMakeFiles\TestApp.dir\src\Generator.cpp.obj CMakeFiles\TestApp.dir\src\Map.cpp.obj CMakeFiles\TestApp.dir\src\Renderer.cpp.obj CMakeFiles\TestApp.dir\src\imgui-SFML.cpp.obj CMakeFiles\TestApp.dir\src\main.cpp.obj | vcpkg_installed\x64-windows\debug\lib\fmtd.lib vcpkg_installed\x64-windows\debug\lib\ImGui-SFML_d.lib vcpkg_installed\x64-windows\debug\lib\imguid.lib vcpkg_installed\x64-windows\debug\lib\sfml-graphics-d.lib vcpkg_installed\x64-windows\debug\lib\sfml-window-d.lib vcpkg_installed\x64-windows\debug\lib\sfml-system-d.lib
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = vcpkg_installed\x64-windows\debug\lib\fmtd.lib  vcpkg_installed\x64-windows\debug\lib\ImGui-SFML_d.lib  vcpkg_installed\x64-windows\debug\lib\imguid.lib  vcpkg_installed\x64-windows\debug\lib\sfml-graphics-d.lib  vcpkg_installed\x64-windows\debug\lib\sfml-window-d.lib  vcpkg_installed\x64-windows\debug\lib\sfml-system-d.lib  opengl32.lib  glu32.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
@@ -232,26 +212,6 @@ build CMakeFiles\DungeonForgeLib.dir\src\Map.cpp.obj.ddi: CXX_SCAN__DungeonForge
 build CMakeFiles\DungeonForgeLib.dir\src\Map.cpp.obj: CXX_COMPILER__DungeonForgeLib_scanned_Debug C$:\00_Dev\DungeonForge\src\Map.cpp | CMakeFiles\DungeonForgeLib.dir\src\Map.cpp.obj.modmap || cmake_object_order_depends_target_DungeonForgeLib CMakeFiles\DungeonForgeLib.dir\CXX.dd
   DEFINES = -DDungeonForgeLib_EXPORTS
   DYNDEP_MODULE_MAP_FILE = CMakeFiles\DungeonForgeLib.dir\src\Map.cpp.obj.modmap
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++20 -MDd -Zi
-  INCLUDES = -IC:\00_Dev\DungeonForge\include
-  OBJECT_DIR = CMakeFiles\DungeonForgeLib.dir
-  OBJECT_FILE_DIR = CMakeFiles\DungeonForgeLib.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\DungeonForgeLib.dir\
-  TARGET_PDB = DungeonForgeLib.pdb
-  dyndep = CMakeFiles/DungeonForgeLib.dir/CXX.dd
-
-build CMakeFiles\DungeonForgeLib.dir\src\MyClass.cpp.obj.ddi: CXX_SCAN__DungeonForgeLib_Debug C$:\00_Dev\DungeonForge\src\MyClass.cpp || cmake_object_order_depends_target_DungeonForgeLib
-  DEFINES = -DDungeonForgeLib_EXPORTS
-  DEP_FILE = CMakeFiles\DungeonForgeLib.dir\src\MyClass.cpp.obj.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\DungeonForgeLib.dir\src\MyClass.cpp.obj.ddi
-  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++20 -MDd -Zi
-  INCLUDES = -IC:\00_Dev\DungeonForge\include
-  OBJ_FILE = CMakeFiles\DungeonForgeLib.dir\src\MyClass.cpp.obj
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles\DungeonForgeLib.dir\src\MyClass.cpp.obj.ddi.i
-
-build CMakeFiles\DungeonForgeLib.dir\src\MyClass.cpp.obj: CXX_COMPILER__DungeonForgeLib_scanned_Debug C$:\00_Dev\DungeonForge\src\MyClass.cpp | CMakeFiles\DungeonForgeLib.dir\src\MyClass.cpp.obj.modmap || cmake_object_order_depends_target_DungeonForgeLib CMakeFiles\DungeonForgeLib.dir\CXX.dd
-  DEFINES = -DDungeonForgeLib_EXPORTS
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles\DungeonForgeLib.dir\src\MyClass.cpp.obj.modmap
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++20 -MDd -Zi
   INCLUDES = -IC:\00_Dev\DungeonForge\include
   OBJECT_DIR = CMakeFiles\DungeonForgeLib.dir
@@ -320,7 +280,7 @@ build CMakeFiles\DungeonForgeLib.dir\src\main.cpp.obj: CXX_COMPILER__DungeonForg
   TARGET_PDB = DungeonForgeLib.pdb
   dyndep = CMakeFiles/DungeonForgeLib.dir/CXX.dd
 
-build CMakeFiles\DungeonForgeLib.dir\CXX.dd | C$:\00_Dev\DungeonForge\out\build\x64-Debug\CMakeFiles\DungeonForgeLib.dir\CXXModules.json CMakeFiles\DungeonForgeLib.dir\src\Generator.cpp.obj.modmap CMakeFiles\DungeonForgeLib.dir\src\Map.cpp.obj.modmap CMakeFiles\DungeonForgeLib.dir\src\MyClass.cpp.obj.modmap CMakeFiles\DungeonForgeLib.dir\src\Renderer.cpp.obj.modmap CMakeFiles\DungeonForgeLib.dir\src\imgui-SFML.cpp.obj.modmap CMakeFiles\DungeonForgeLib.dir\src\main.cpp.obj.modmap: CXX_DYNDEP__DungeonForgeLib_Debug CMakeFiles\DungeonForgeLib.dir\src\Generator.cpp.obj.ddi CMakeFiles\DungeonForgeLib.dir\src\Map.cpp.obj.ddi CMakeFiles\DungeonForgeLib.dir\src\MyClass.cpp.obj.ddi CMakeFiles\DungeonForgeLib.dir\src\Renderer.cpp.obj.ddi CMakeFiles\DungeonForgeLib.dir\src\imgui-SFML.cpp.obj.ddi CMakeFiles\DungeonForgeLib.dir\src\main.cpp.obj.ddi | C$:\00_Dev\DungeonForge\out\build\x64-Debug\CMakeFiles\DungeonForgeLib.dir\CXXDependInfo.json
+build CMakeFiles\DungeonForgeLib.dir\CXX.dd | C$:\00_Dev\DungeonForge\out\build\x64-Debug\CMakeFiles\DungeonForgeLib.dir\CXXModules.json CMakeFiles\DungeonForgeLib.dir\src\Generator.cpp.obj.modmap CMakeFiles\DungeonForgeLib.dir\src\Map.cpp.obj.modmap CMakeFiles\DungeonForgeLib.dir\src\Renderer.cpp.obj.modmap CMakeFiles\DungeonForgeLib.dir\src\imgui-SFML.cpp.obj.modmap CMakeFiles\DungeonForgeLib.dir\src\main.cpp.obj.modmap: CXX_DYNDEP__DungeonForgeLib_Debug CMakeFiles\DungeonForgeLib.dir\src\Generator.cpp.obj.ddi CMakeFiles\DungeonForgeLib.dir\src\Map.cpp.obj.ddi CMakeFiles\DungeonForgeLib.dir\src\Renderer.cpp.obj.ddi CMakeFiles\DungeonForgeLib.dir\src\imgui-SFML.cpp.obj.ddi CMakeFiles\DungeonForgeLib.dir\src\main.cpp.obj.ddi | C$:\00_Dev\DungeonForge\out\build\x64-Debug\CMakeFiles\DungeonForgeLib.dir\CXXDependInfo.json
 
 
 # =============================================================================
@@ -330,7 +290,7 @@ build CMakeFiles\DungeonForgeLib.dir\CXX.dd | C$:\00_Dev\DungeonForge\out\build\
 #############################################
 # Link the shared library DungeonForgeLib.dll
 
-build DungeonForgeLib.dll DungeonForgeLib.lib: CXX_SHARED_LIBRARY_LINKER__DungeonForgeLib_Debug CMakeFiles\DungeonForgeLib.dir\src\Generator.cpp.obj CMakeFiles\DungeonForgeLib.dir\src\Map.cpp.obj CMakeFiles\DungeonForgeLib.dir\src\MyClass.cpp.obj CMakeFiles\DungeonForgeLib.dir\src\Renderer.cpp.obj CMakeFiles\DungeonForgeLib.dir\src\imgui-SFML.cpp.obj CMakeFiles\DungeonForgeLib.dir\src\main.cpp.obj
+build DungeonForgeLib.dll DungeonForgeLib.lib: CXX_SHARED_LIBRARY_LINKER__DungeonForgeLib_Debug CMakeFiles\DungeonForgeLib.dir\src\Generator.cpp.obj CMakeFiles\DungeonForgeLib.dir\src\Map.cpp.obj CMakeFiles\DungeonForgeLib.dir\src\Renderer.cpp.obj CMakeFiles\DungeonForgeLib.dir\src\imgui-SFML.cpp.obj CMakeFiles\DungeonForgeLib.dir\src\main.cpp.obj
   LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL  /DEF:CMakeFiles\DungeonForgeLib.dir\.\exports.def
   LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib

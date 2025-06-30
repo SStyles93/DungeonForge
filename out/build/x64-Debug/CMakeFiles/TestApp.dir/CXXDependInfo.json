@@ -32,11 +32,6 @@
 			"language" : "CXX",
 			"source" : "C:/00_Dev/DungeonForge/src/Map.cpp"
 		},
-		"CMakeFiles/TestApp.dir/src/MyClass.cpp.obj" : 
-		{
-			"language" : "CXX",
-			"source" : "C:/00_Dev/DungeonForge/src/MyClass.cpp"
-		},
 		"CMakeFiles/TestApp.dir/src/Renderer.cpp.obj" : 
 		{
 			"language" : "CXX",

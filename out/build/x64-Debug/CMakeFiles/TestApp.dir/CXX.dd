@@ -3,8 +3,6 @@ build CMakeFiles\TestApp.dir\src\Generator.cpp.obj: dyndep
 
 build CMakeFiles\TestApp.dir\src\Map.cpp.obj: dyndep
 
-build CMakeFiles\TestApp.dir\src\MyClass.cpp.obj: dyndep
-
 build CMakeFiles\TestApp.dir\src\Renderer.cpp.obj: dyndep
 
 build CMakeFiles\TestApp.dir\src\imgui-SFML.cpp.obj: dyndep

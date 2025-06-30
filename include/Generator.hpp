@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "dllexport.h"
+//#include "dllexport.h"
 #include "Map.hpp"
-//#include <SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include <algorithm>
 #include <cmath>
 #include <cstdlib>  // for std::rand
@@ -81,19 +81,19 @@ private:
     void collapseCell(std::vector<std::vector<std::vector<int>>>& wave, int x, int y);
 
 };
-
-extern "C" 
-{
-    PXP_DF_API Generator* CreateGenerator(unsigned int width, unsigned int height);
-
-    PXP_DF_API void DeleteGenerator(Generator* instance);
-
-    PXP_DF_API void Generate(Generator* instance);
-
-    PXP_DF_API Map& GetMap(Generator* instance);
-
-    PXP_DF_API int GetTile(Generator* instance, unsigned int x, unsigned int y);
-
-    PXP_DF_API void SetAlgorithm(Generator* instance, int type);
-
-}
+//
+//extern "C" 
+//{
+//    PXP_DF_API Generator* CreateGenerator(unsigned int width, unsigned int height);
+//
+//    PXP_DF_API void DeleteGenerator(Generator* instance);
+//
+//    PXP_DF_API void Generate(Generator* instance);
+//
+//    PXP_DF_API Map& GetMap(Generator* instance);
+//
+//    PXP_DF_API int GetTile(Generator* instance, unsigned int x, unsigned int y);
+//
+//    PXP_DF_API void SetAlgorithm(Generator* instance, int type);
+//
+//}

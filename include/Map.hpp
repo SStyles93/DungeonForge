@@ -1,5 +1,4 @@
 #pragma once
-#include "dllexport.h"
 #include <vector>
 
 class Map

@@ -60,43 +60,43 @@ void Generator::generatePerlin(Map& map)
     }
 }
 
-//DLL EXPORT
-
-PXP_DF_API Generator* CreateGenerator(unsigned int width, unsigned int height)
-{
-    return new Generator(width, height);
-}
-
-PXP_DF_API void DeleteGenerator(Generator* instance)
-{
-    delete instance;
-}
-
-PXP_DF_API void Generate(Generator* instance)
-{
-    if (instance == nullptr) return;
-    instance->generate();
-}
-
-PXP_DF_API Map& GetMap(Generator* instance)
-{
-    if (instance != nullptr)
-    return instance->getMap();
-}
-
-PXP_DF_API int GetTile(Generator* instance, unsigned int x, unsigned int y)
-{
-    return instance ? instance->getMap().getTile(x, y) : 0;
-}
-
-PXP_DF_API void SetAlgorithm(Generator* instance, int type)
-{
-    if (instance != nullptr)
-    {
-        instance->setAlgorithm((AlgorithmType)type);
-    }
-}
-
+////DLL EXPORT
+//
+//PXP_DF_API Generator* CreateGenerator(unsigned int width, unsigned int height)
+//{
+//    return new Generator(width, height);
+//}
+//
+//PXP_DF_API void DeleteGenerator(Generator* instance)
+//{
+//    delete instance;
+//}
+//
+//PXP_DF_API void Generate(Generator* instance)
+//{
+//    if (instance == nullptr) return;
+//    instance->generate();
+//}
+//
+//PXP_DF_API Map& GetMap(Generator* instance)
+//{
+//    if (instance != nullptr)
+//    return instance->getMap();
+//}
+//
+//PXP_DF_API int GetTile(Generator* instance, unsigned int x, unsigned int y)
+//{
+//    return instance ? instance->getMap().getTile(x, y) : 0;
+//}
+//
+//PXP_DF_API void SetAlgorithm(Generator* instance, int type)
+//{
+//    if (instance != nullptr)
+//    {
+//        instance->setAlgorithm((AlgorithmType)type);
+//    }
+//}
+//
 
 
 
