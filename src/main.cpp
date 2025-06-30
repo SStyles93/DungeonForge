@@ -17,7 +17,7 @@ int main()
 	// run the program as long as the window is open
 
 	//Map map(50,50);
-	Generator generator(50,50);
+	Generator m_randomGenerator(50,50);
 	Renderer renderer;
 
 	sf::Clock deltaClock;
@@ -38,7 +38,7 @@ int main()
 				{
 					case sf::Keyboard::Scancode::Backspace:
 					case sf::Keyboard::Scancode::Enter:
-						generator.generate();
+						m_randomGenerator.generate();
 						break;
 				}
 			}
@@ -49,21 +49,21 @@ int main()
 		ImGui::SFML::Update(window, deltaClock.restart());
 		ImGui::Begin("Map Generator");
 
-		static int map_size[2] = { generator.getMap().getWidth(), generator.getMap().getHeight()};
+		static int map_size[2] = { m_randomGenerator.getMap().getWidth(), m_randomGenerator.getMap().getHeight()};
 		ImGui::Text("Map Size");
 		ImGui::InputInt2("", map_size);
 		if (map_size[0] < 0) map_size[0] = 0;
 		if (map_size[1] < 0) map_size[1] = 0;
-		if (generator.getMap().getWidth() != map_size[0] || generator.getMap().getHeight() != map_size[1])
+		if (m_randomGenerator.getMap().getWidth() != map_size[0] || m_randomGenerator.getMap().getHeight() != map_size[1])
 		{
 			Map map(map_size[0], map_size[1]);
-			generator.getMap();
+			m_randomGenerator.getMap();
 		}
 
 
 
 		static int selected_generator = 0;
-		const char* names[] = { "Perlin", "Drunkard's Walk", "Binary Space Partitioning", "Cellular Automata"/*,"Wave Function Collapse" */};
+		const char* names[] = { "Binary Space Partitioning", "Cellular Automata", "Drunkard's Walk", "Perlin" /*,"Wave Function Collapse" */};
 
 		if (ImGui::Button("Select the Generator"))
 			ImGui::OpenPopup("Generator_Popup");
@@ -76,7 +76,7 @@ int main()
 			for (int i = 0; i < IM_ARRAYSIZE(names); i++)
 				if (ImGui::Selectable(names[i]))
 				{
-					generator.setAlgorithm((AlgorithmType)i);
+					m_randomGenerator.setAlgorithm((AlgorithmType)i);
 					selected_generator = i;
 				}
 			ImGui::EndPopup();
@@ -84,7 +84,7 @@ int main()
 		static int show_error_message = 0;
 		if (ImGui::Button("Generate"))
 		{
-			generator.generate();
+			m_randomGenerator.generate();
 		}
 		if (show_error_message && selected_generator == -1)
 			ImGui::TextColored(ImVec4(sf::Color::Red), "No generator was selected");
@@ -96,7 +96,7 @@ int main()
 
 		window.clear(sf::Color::Black);
 		//map = generator.GetMap();
-		renderer.render(window, generator.getMap());
+		renderer.render(window, m_randomGenerator.getMap());
 
 		ImGui::SFML::Render(window);
 		window.display();

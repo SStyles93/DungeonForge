@@ -1,6 +1,6 @@
 Detecting compiler hash for triplet x64-windows...
 Compiler found: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe
-The following packages are already installed:
+The following packages will be built and installed:
   * brotli:x64-windows@1.1.0#1
   * bzip2[core,tool]:x64-windows@1.0.8#6
   * egl-registry:x64-windows@2024-01-25
@@ -21,6 +21,68 @@ The following packages are already installed:
   * vcpkg-cmake:x64-windows@2024-04-23
   * vcpkg-cmake-config:x64-windows@2024-05-23
   * zlib:x64-windows@1.3.1
+Additional packages (*) will be modified to complete this operation.
+Restored 20 package(s) from C:\Users\SSTYLES\AppData\Local\vcpkg\archives in 368 ms. Use --debug to see more details.
+Installing 1/20 vcpkg-cmake-config:x64-windows@2024-05-23...
+Elapsed time to handle vcpkg-cmake-config:x64-windows: 6.69 ms
+vcpkg-cmake-config:x64-windows package ABI: 6c9fb6c9cb2a633972e2ff5ea92fb9959e86f4dbd8dfbda60e609a1db7380663
+Installing 2/20 vcpkg-cmake:x64-windows@2024-04-23...
+Elapsed time to handle vcpkg-cmake:x64-windows: 8 ms
+vcpkg-cmake:x64-windows package ABI: cfa3ae244b09783952dfc0fce779a5a9fb6e1b98f4aaca2999211c3c45e3329c
+Installing 3/20 fmt:x64-windows@11.0.2#1...
+Elapsed time to handle fmt:x64-windows: 21.2 ms
+fmt:x64-windows package ABI: c2e0bc6b5197b7841973a989178a184cb354e4daeb83cfa0fca1158ee391937b
+Installing 4/20 imgui:x64-windows@1.91.9...
+Elapsed time to handle imgui:x64-windows: 13.6 ms
+imgui:x64-windows package ABI: bfc75096f5bc57fae101800bc84ebc0ba1fa150ea45cd56e865f0ea5ab7a0cba
+Installing 5/20 egl-registry:x64-windows@2024-01-25...
+Elapsed time to handle egl-registry:x64-windows: 9.63 ms
+egl-registry:x64-windows package ABI: 8e0fd116593e2596fafca5a92595b3aef5d0e168247c5a5636c430ed8c652afa
+Installing 6/20 opengl-registry:x64-windows@2024-02-10#1...
+Elapsed time to handle opengl-registry:x64-windows: 19.3 ms
+opengl-registry:x64-windows package ABI: a1fb0b400794469a993b5efa928644e3af9cf591787aeba960b1e4e5502bd438
+Installing 7/20 opengl:x64-windows@2022-12-04#3...
+Elapsed time to handle opengl:x64-windows: 10.9 ms
+opengl:x64-windows package ABI: 697fd0d82e9504c0159e67df0637a84856036c1651c6e5b64e97aa43d86c6f74
+Installing 8/20 stb:x64-windows@2024-07-29#1...
+Elapsed time to handle stb:x64-windows: 14.4 ms
+stb:x64-windows package ABI: 2cd17a9e3fe4d64425d98453cae1494cb9f6b0ac7a0015ceef006be42ed7a193
+Installing 9/20 zlib:x64-windows@1.3.1...
+Elapsed time to handle zlib:x64-windows: 13.3 ms
+zlib:x64-windows package ABI: ebe4de9de5d4dfa5b9fedae15ca9002e51844c20b3d933e074e64857c74214bf
+Installing 10/20 libpng:x64-windows@1.6.47...
+Elapsed time to handle libpng:x64-windows: 21.9 ms
+libpng:x64-windows package ABI: 55f51aa7889a966c37dd94398b91db714443e76e553cc8a10034522d6c5ba86d
+Installing 11/20 bzip2[core,tool]:x64-windows@1.0.8#6...
+Elapsed time to handle bzip2:x64-windows: 21.6 ms
+bzip2:x64-windows package ABI: a88ff825665a9a84033e264119b216662c191a4f1d8346afb3aa17b1f694d305
+Installing 12/20 brotli:x64-windows@1.1.0#1...
+Elapsed time to handle brotli:x64-windows: 28.8 ms
+brotli:x64-windows package ABI: c04dafad662c28812f5c90b53752a0cc046850f3c0ba54b94d94dea3fae98244
+Installing 13/20 freetype[brotli,bzip2,core,png,zlib]:x64-windows@2.13.3...
+Elapsed time to handle freetype:x64-windows: 50.7 ms
+freetype:x64-windows package ABI: c8104ac7955f46cde789c1bd2ddcb6e739b38db360baa0df0856b255b9ddea83
+Installing 14/20 miniaudio:x64-windows@0.11.22...
+Elapsed time to handle miniaudio:x64-windows: 8.28 ms
+miniaudio:x64-windows package ABI: 2e906cdb68c57a2a2a201603d4fb94eae59a0c49b22e50a330f279399a66ddb9
+Installing 15/20 libogg:x64-windows@1.3.5#2...
+Elapsed time to handle libogg:x64-windows: 18.2 ms
+libogg:x64-windows package ABI: 853a07d17a6486ebbb1aa5ac7d8ab25461316f5d07bb87e4cdfdd22792b55466
+Installing 16/20 libvorbis:x64-windows@1.3.7#4...
+Elapsed time to handle libvorbis:x64-windows: 27.1 ms
+libvorbis:x64-windows package ABI: 1500f8112df8a5d65458210b9219ff608b6cac52b50d6ef74e27400d21ba4ad0
+Installing 17/20 libflac[core,stack-protector]:x64-windows@1.5.0...
+Elapsed time to handle libflac:x64-windows: 30.3 ms
+libflac:x64-windows package ABI: d11258444068d72b02e0d4e102aaba3f0e0aa232f1c5bcc7fa41666a6fb24ea2
+Installing 18/20 sfml[audio,core,graphics,network,window]:x64-windows@3.0.0#1...
+Elapsed time to handle sfml:x64-windows: 101 ms
+sfml:x64-windows package ABI: fbd4ee9a46b32e6bb35857e2ecb3246a81c6d2188e031790645eac881f6ce78f
+Installing 19/20 imgui-sfml:x64-windows@3.0#1...
+Elapsed time to handle imgui-sfml:x64-windows: 19.8 ms
+imgui-sfml:x64-windows package ABI: 11768f0059a89420105743f881e755b41987a6982dcc7b2a70338a496b1bf2be
+Installing 20/20 nlohmann-json:x64-windows@3.12.0...
+Elapsed time to handle nlohmann-json:x64-windows: 37.7 ms
+nlohmann-json:x64-windows package ABI: 9c5dbb5d37abd97c1fcfa6337607bd4d9dc9ef6880a1060451e81e86dffcf49c
 The package fmt provides CMake targets:
 
     find_package(fmt CONFIG REQUIRED)
@@ -62,4 +124,4 @@ For more information, see the docs here:
     
     https://json.nlohmann.me/api/macros/json_use_implicit_conversions/
 
-All requested installations completed successfully in: 854 us
+All requested installations completed successfully in: 495 ms

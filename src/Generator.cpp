@@ -5,6 +5,8 @@ Generator::Generator(unsigned int width, unsigned int height) : m_map(Map(width,
 
 void Generator::generate()
 {
+    generateSeed();
+
     switch (m_algorithmType)
     {
         case BinarySpacePartitioning:
@@ -27,6 +29,8 @@ void Generator::generate()
     }
 }
 
+
+
 void Generator::setAlgorithm(AlgorithmType type)
 {
     m_algorithmType = type;
@@ -47,6 +51,23 @@ void Generator::setMap(Map& map)
     m_map = map;
 }
 
+void Generator::setSeed(int seed)
+{
+    m_seed = seed;
+}
+
+
+void Generator::generateSeed()
+{
+    unsigned int currentSeed;
+    if (m_seed == -1)
+        currentSeed = std::chrono::system_clock::now().time_since_epoch().count();
+    else
+        currentSeed = m_seed;
+
+    m_randomGenerator.seed(currentSeed);
+}
+
 void Generator::generatePerlin(Map& map)
 {
     for (unsigned int y = 0; y < map.getHeight(); ++y)
@@ -54,51 +75,12 @@ void Generator::generatePerlin(Map& map)
         for (unsigned int x = 0; x < map.getWidth(); ++x)
         {
             // Randomly assign 0 (floor) or 1 (wall)
-            int tileValue = std::rand() % 2;
+
+            int tileValue = m_randomGenerator() % 2;
             map.setTile(x, y, tileValue);
         }
     }
 }
-
-////DLL EXPORT
-//
-//PXP_DF_API Generator* CreateGenerator(unsigned int width, unsigned int height)
-//{
-//    return new Generator(width, height);
-//}
-//
-//PXP_DF_API void DeleteGenerator(Generator* instance)
-//{
-//    delete instance;
-//}
-//
-//PXP_DF_API void Generate(Generator* instance)
-//{
-//    if (instance == nullptr) return;
-//    instance->generate();
-//}
-//
-//PXP_DF_API Map& GetMap(Generator* instance)
-//{
-//    if (instance != nullptr)
-//    return instance->getMap();
-//}
-//
-//PXP_DF_API int GetTile(Generator* instance, unsigned int x, unsigned int y)
-//{
-//    return instance ? instance->getMap().getTile(x, y) : 0;
-//}
-//
-//PXP_DF_API void SetAlgorithm(Generator* instance, int type)
-//{
-//    if (instance != nullptr)
-//    {
-//        instance->setAlgorithm((AlgorithmType)type);
-//    }
-//}
-//
-
-
 
 void Generator::generateDrunkardsWalk(Map& map)
 {
@@ -120,7 +102,7 @@ void Generator::generateDrunkardsWalk(Map& map)
     while (floorCount < targetFloorCount)
     {
         // Random move: 0=left, 1=right, 2=up, 3=down
-        int dir = std::rand() % 4;
+        int dir = m_randomGenerator() % 4;
 
         switch (dir)
         {
@@ -159,11 +141,11 @@ void Generator::generateBSP(Map& map)
     for (const Rect& space : spaces)
     {
         // Room size
-        int roomWidth = 4 + std::rand() % (space.width);
-        int roomHeight = 4 + std::rand() % (space.height);
+        int roomWidth = 4 + m_randomGenerator() % (space.width);
+        int roomHeight = 4 + m_randomGenerator() % (space.height);
 
-        int roomX = space.x + std::rand() % (space.width);
-        int roomY = space.y + std::rand() % (space.height);
+        int roomX = space.x + m_randomGenerator() % (space.width);
+        int roomY = space.y + m_randomGenerator() % (space.height);
 
         Rect room = { roomX, roomY, roomWidth, roomHeight };
         createRoom(map, room);
@@ -188,7 +170,7 @@ void Generator::splitSpace(std::vector<Rect>& spaces, int maxLeafSize)
 
         for (const Rect& space : spaces)
         {
-            bool splitH = std::rand() % 2;
+            bool splitH = m_randomGenerator() % 2;
             if (space.width > space.height && (float)space.width / space.height >= 1.25f)
                 splitH = false;
             else if (space.height > space.width && (float)space.height / space.width >= 1.25f)
@@ -203,13 +185,13 @@ void Generator::splitSpace(std::vector<Rect>& spaces, int maxLeafSize)
 
             if (splitH)
             {
-                int split = 4 + std::rand() % (space.height - 8);
+                int split = 4 + m_randomGenerator() % (space.height - 8);
                 newSpaces.push_back({ space.x, space.y, space.width, split });
                 newSpaces.push_back({ space.x, space.y + split, space.width, space.height - split });
             }
             else
             {
-                int split = 4 + std::rand() % (space.width - 8);
+                int split = 4 + m_randomGenerator() % (space.width - 8);
                 newSpaces.push_back({ space.x, space.y, split, space.height });
                 newSpaces.push_back({ space.x + split, space.y, space.width - split, space.height });
             }
@@ -269,7 +251,7 @@ void Generator::generateCellularAutomata(Map& map, int fillProbability, int iter
             if (x == 0 || y == 0 || x == width - 1 || y == height - 1)
                 map.setTile(x, y, 1);  // edges stay walls
             else
-                map.setTile(x, y, (std::rand() % 100 < fillProbability) ? 1 : 0);
+                map.setTile(x, y, (m_randomGenerator() % 100 < fillProbability) ? 1 : 0);
         }
     }
 
@@ -395,9 +377,9 @@ void Generator::floodFillRegions(Map& map)
         if (id == largestRegionId)
             continue;
 
-        std::pair<int, int> from = tiles[std::rand() % tiles.size()];
+        std::pair<int, int> from = tiles[m_randomGenerator() % tiles.size()];
         // pick a random tile in the isolated region
-        std::pair<int, int> to = regions[largestRegionId][std::rand() % regions[largestRegionId].size()];
+        std::pair<int, int> to = regions[largestRegionId][m_randomGenerator() % regions[largestRegionId].size()];
         connectPoints(map, from, to);
     }
 }
@@ -534,7 +516,7 @@ int Generator::getLowestEntropyCell(const std::vector<std::vector<std::vector<in
 
 void Generator::collapseCell(std::vector<std::vector<std::vector<int>>>& wave, int x, int y)
 {
-    int rndIdx = std::rand() % wave[x][y].size();
+    int rndIdx = m_randomGenerator() % wave[x][y].size();
     int selected = wave[x][y][rndIdx];
     wave[x][y] = { selected };
 }

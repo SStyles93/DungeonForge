@@ -7,6 +7,7 @@
 #include <cstdlib>  // for std::rand
 #include <ctime>
 #include <map>
+#include <random>
 #include <queue>
 #include <vector>
 
@@ -29,9 +30,12 @@ public:
     
     Map& getMap();
 
+
     void setAlgorithm(AlgorithmType type);
     int getAlgorithm();
     void setMap(Map& map);
+    void setSeed(int seed);
+
 
 private:
     struct Rect
@@ -42,6 +46,11 @@ private:
 
     Map m_map;
     AlgorithmType m_algorithmType = AlgorithmType::Perlin;
+    int m_seed = 0;
+    std::mt19937 m_randomGenerator;
+
+
+    void generateSeed();
 
     // Algorithms
 
