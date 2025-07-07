@@ -16,11 +16,11 @@ find_package(SFML COMPONENTS Graphics CONFIG REQUIRED)
 #find_package(benchmark CONFIG REQUIRED)
 
 
-#TRACY
-option(ENABLE_PROFILER "Enable Tracy Profiling" OFF)
-if(ENABLE_PROFILER)
-add_subdirectory(external/tracy)
-endif()
+##TRACY
+#option(ENABLE_PROFILER "Enable Tracy Profiling" OFF)
+#if(ENABLE_PROFILER)
+#add_subdirectory(external/tracy)
+#endif()
 
 #PROGRAM FILES
 file(GLOB_RECURSE SRC_FILES src/*.cpp include/*.hpp)

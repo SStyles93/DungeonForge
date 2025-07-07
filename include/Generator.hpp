@@ -6,6 +6,7 @@
 #include <cmath>
 #include <cstdlib>  // for std::rand
 #include <ctime>
+#include <list>
 #include <map>
 #include <queue>
 #include <random>
@@ -35,10 +36,18 @@ public:
     void setMap(Map& map);
     void setSeed(int seed);
 
+    //BSP
+    void setMaxBoderSize(int size);
+
 private:
     struct Rect
     {
         int x, y, width, height;
+    public:
+        std::pair<int, int> getCenter() 
+        { 
+            return { x + (width / 2 + width % 2), y + (height / 2 + height % 2) };
+        }
     };
 
 
@@ -46,6 +55,7 @@ private:
     AlgorithmType m_algorithmType = AlgorithmType::Perlin;
     int m_seed = -1;
     std::mt19937 m_randomGenerator;
+    int m_maxBorderSize;
 
     void generateSeed();
 
@@ -59,9 +69,9 @@ private:
 
     //BSP
 
-    void splitSpace(std::vector<Rect>& spaces, int maxLeafSize);
+    void splitSpaces(std::vector<Rect>& spaces, int maxBorderSize);
     void createRoom(Map& map, const Rect& room);
-    void connectRooms(Map& map, const std::pair<int,int>& pointA, const std::pair<int, int>& pointB);
+    void connectRooms(Map& map, std::vector<Rect>& spaces);
 
     //Cellular Automata
     
@@ -103,4 +113,6 @@ extern "C"
     PXP_DF_API void SetAlgorithm(Generator* instance, int type);
 
     PXP_DF_API void SetSeed(Generator* instance, int seed);
+
+    PXP_DF_API void SetMaxBoderSize(Generator* instance, int size);
 }

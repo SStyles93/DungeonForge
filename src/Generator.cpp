@@ -66,6 +66,12 @@ void Generator::generateSeed()
     m_randomGenerator.seed(currentSeed);
 }
 
+void Generator::setMaxBoderSize(int size)
+{
+    if (size < 1) return;
+    m_maxBorderSize = size;
+}
+
 
 void Generator::generatePerlin(Map& map)
 {
@@ -123,6 +129,13 @@ PXP_DF_API void SetSeed(Generator* instance, int seed)
     instance->setSeed(seed);
 }
 
+PXP_DF_API void SetMaxBoderSize(Generator* instance, int size)
+{
+    if (instance == nullptr) return;
+    instance->setMaxBoderSize(size);
+}
+
+
 
 
 
@@ -169,109 +182,137 @@ void Generator::generateDrunkardsWalk(Map& map)
 
 void Generator::generateBSP(Map& map)
 {
-    // Fill map with walls
+    //Fill map with walls
     for (unsigned int y = 0; y < map.getHeight(); ++y)
         for (unsigned int x = 0; x < map.getWidth(); ++x)
             map.setTile(x, y, 1);
 
     std::vector<Rect> spaces;
-    spaces.push_back({ 1, 1, (int)map.getWidth() - 2, (int)map.getHeight() - 2 });
+    spaces.push_back({ 0, 0, (int)map.getWidth(), (int)map.getHeight() });
 
-    int maxLeafSize = 20;
-    splitSpace(spaces, maxLeafSize);
-
-    std::vector<std::pair<int, int>> roomCenters;
+    splitSpaces(spaces, 15);
 
     for (const Rect& space : spaces)
     {
-        // Room size
-        int roomWidth = 4 + m_randomGenerator() % (space.width);
-        int roomHeight = 4 + m_randomGenerator() % (space.height);
-
-        int roomX = space.x + m_randomGenerator() % (space.width);
-        int roomY = space.y + m_randomGenerator() % (space.height);
-
-        Rect room = { roomX, roomY, roomWidth, roomHeight };
-        createRoom(map, room);
-
-        // Store center
-        roomCenters.push_back({ roomX + roomWidth / 2, roomY + roomHeight / 2 });
+        createRoom(map, space);
     }
 
-    // Connect rooms by chaining center points
-    for (size_t i = 1; i < roomCenters.size(); ++i)
-        connectRooms(map, roomCenters[i - 1], roomCenters[i]);
+    connectRooms(map, spaces);
 }
 
-void Generator::splitSpace(std::vector<Rect>& spaces, int maxLeafSize)
+void Generator::splitSpaces(std::vector<Rect>& spaces, int maxBorderSize)
 {
-    bool didSplit = true;
+    std::queue<Rect> areaQueue;
+    areaQueue.push(spaces[0]);
+    spaces.clear();
 
-    while (didSplit)
+    Rect firstArea;
+    Rect secondArea;
+
+    do
     {
-        didSplit = false;
-        std::vector<Rect> newSpaces;
+        Rect areaToProcess = areaQueue.front();
+        areaQueue.pop();
 
-        for (const Rect& space : spaces)
+        // If area corresponds to surface add
+        if (areaToProcess.height <= maxBorderSize || areaToProcess.width <= maxBorderSize)
         {
-            bool splitH = m_randomGenerator() % 2;
-            if (space.width > space.height && (float)space.width / space.height >= 1.25f)
-                splitH = false;
-            else if (space.height > space.width && (float)space.height / space.width >= 1.25f)
-                splitH = true;
-
-            if ((splitH && space.height <= maxLeafSize) ||
-                (!splitH && space.width <= maxLeafSize))
+            spaces.push_back(areaToProcess);
+        }
+        // Process if not split enough
+        else
+        {
+            //Random value if m_gen is Even == Split H
+            if (m_randomGenerator() % 2 == 0)
             {
-                newSpaces.push_back(space);
-                continue;
-            }
+                firstArea.x = areaToProcess.x;
+                firstArea.y = areaToProcess.y;
+                firstArea.width = areaToProcess.width;
+                firstArea.height = static_cast<int>(std::floor(areaToProcess.height / 2));
 
-            if (splitH)
-            {
-                int split = 4 + m_randomGenerator() % (space.height - 8);
-                newSpaces.push_back({ space.x, space.y, space.width, split });
-                newSpaces.push_back({ space.x, space.y + split, space.width, space.height - split });
+                secondArea.x = areaToProcess.x;
+                secondArea.y = areaToProcess.y + static_cast<int>(std::floor(areaToProcess.height / 2));
+                secondArea.width = areaToProcess.width;
+                secondArea.height = areaToProcess.height - static_cast<int>(std::floor(areaToProcess.height / 2));
             }
+            //if is Odd
             else
             {
-                int split = 4 + m_randomGenerator() % (space.width - 8);
-                newSpaces.push_back({ space.x, space.y, split, space.height });
-                newSpaces.push_back({ space.x + split, space.y, space.width - split, space.height });
-            }
+                firstArea.x = areaToProcess.x;
+                firstArea.y = areaToProcess.y;
+                firstArea.width = static_cast<int>(std::floor(areaToProcess.width / 2));;
+                firstArea.height = areaToProcess.height;
 
-            didSplit = true;
+                secondArea.x = areaToProcess.x + static_cast<int>(std::floor(areaToProcess.width / 2));
+                secondArea.y = areaToProcess.y;
+                secondArea.width = areaToProcess.width - static_cast<int>(std::floor(areaToProcess.width / 2));
+                secondArea.height = areaToProcess.height;
+            }
+            areaQueue.push(firstArea);
+            areaQueue.push(secondArea);
         }
 
-        spaces = newSpaces;
-    }
+    } while (areaQueue.size() > 0);
 }
 
 void Generator::createRoom(Map& map, const Rect& room)
 {
-    for (int y = room.y; y < room.y + room.height; ++y)
+    for (int y = room.y + 1; y < room.y + room.height - 1; ++y)
     {
-        for (int x = room.x; x < room.x + room.width; ++x)
+        for (int x = room.x + 1; x < room.x + room.width - 1; ++x)
         {
             map.setTile(x, y, 0);
         }
     }
 }
 
-void Generator::connectRooms(Map& map, const std::pair<int, int>& pointA, const std::pair<int, int>& pointB)
+double dist(const std::pair<int, int> PointA, const std::pair<int, int>& PointB)
 {
-    std::pair<int, int> current = pointA;
+    double x = PointA.first - PointB.first; //calculating number to square in next step
+    double y = PointA.second - PointB.second;
+    double dist;
 
-    while (current.first != pointB.first)
-    {
-        map.setTile(current.first, current.second, 0);
-        current.first += (pointB.first > current.first) ? 1 : -1;
-    }
+    dist = pow(x, 2) + pow(y, 2);       //calculating Euclidean distance
+    dist = sqrt(dist);
 
-    while (current.second != pointB.second)
+    return dist;
+}
+
+void Generator::connectRooms(Map& map, std::vector<Rect>& spaces)
+{
+    //Randomly select a room center
+    int selectedSpace = m_randomGenerator() % (spaces.size());
+    std::pair<int, int> currentRoomCenter = spaces[selectedSpace].getCenter();
+
+    // Create a list of centers to sort
+    std::list<std::pair<int, int>> sortedCenters;
+    for (auto space : spaces)
+        sortedCenters.push_back(space.getCenter());
+
+    while (sortedCenters.size() > 0)
     {
-        map.setTile(current.first, current.second, 0);
-        current.second += (pointB.second > current.second ? 1 : -1);
+        //sort with lambda
+        sortedCenters.sort(
+            [currentRoomCenter](std::pair<int, int> a, std::pair<int, int> b)
+        {
+            return (dist(currentRoomCenter, a) < dist(currentRoomCenter, b));
+        });
+
+        std::pair<int, int> closestCenter = sortedCenters.front();
+
+        while (currentRoomCenter.first != closestCenter.first)
+        {
+            map.setTile(currentRoomCenter.first, currentRoomCenter.second, 0);
+            currentRoomCenter.first += (currentRoomCenter.first < closestCenter.first) ? 1 : -1;
+        }
+
+        while (currentRoomCenter.second != closestCenter.second)
+        {
+            map.setTile(currentRoomCenter.first, currentRoomCenter.second, 0);
+            currentRoomCenter.second += (currentRoomCenter.second < closestCenter.second) ? 1 : -1;
+        }
+        currentRoomCenter = closestCenter;
+        sortedCenters.remove(closestCenter);
     }
 }
 
