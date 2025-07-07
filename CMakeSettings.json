@@ -5,7 +5,7 @@
       "generator": "Ninja",
       "configurationType": "Debug",
       "inheritEnvironments": [ "msvc_x64_x64" ],
-      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "buildRoot": "${projectDir}\\build\\${name}",
       "installRoot": "${projectDir}\\out\\install\\${name}",
       "cmakeCommandArgs": "",
       "buildCommandArgs": "",
@@ -21,6 +21,11 @@
           "name": "IMGUI_DIR",
           "value": "C:/00_Dev/DungeonForge/external/imgui",
           "type": "PATH"
+        },
+        {
+          "name": "SFML_DOC_DIR",
+          "value": "SFML_DOC_DIR-NOTFOUND",
+          "type": "PATH"
         }
       ]
     },
@@ -28,7 +33,7 @@
       "name": "x64-Release",
       "generator": "Ninja",
       "configurationType": "Release",
-      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "buildRoot": "${projectDir}\\build\\${name}",
       "installRoot": "${projectDir}\\out\\install\\${name}",
       "cmakeCommandArgs": "",
       "buildCommandArgs": "",
@@ -47,7 +52,7 @@
       "name": "x64-RelWithDebInfo",
       "generator": "Ninja",
       "configurationType": "RelWithDebInfo",
-      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "buildRoot": "${projectDir}\\build\\${name}",
       "installRoot": "${projectDir}\\out\\install\\${name}",
       "cmakeCommandArgs": "",
       "buildCommandArgs": "",

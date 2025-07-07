@@ -24,10 +24,11 @@ find_package(SFML COMPONENTS Graphics CONFIG REQUIRED)
 
 #PROGRAM FILES
 file(GLOB_RECURSE SRC_FILES src/*.cpp include/*.hpp)
-add_executable(DFGen ${SRC_FILES})
-target_link_libraries(DFGen PUBLIC fmt::fmt)
-target_link_libraries(DFGen PUBLIC nlohmann_json::nlohmann_json)
-target_link_libraries(DFGen PUBLIC ImGui-SFML::ImGui-SFML)
+add_executable(TestApp ${SRC_FILES})
+target_include_directories(TestApp PUBLIC include/)
+target_link_libraries(TestApp PUBLIC fmt::fmt)
+target_link_libraries(TestApp PUBLIC nlohmann_json::nlohmann_json)
+target_link_libraries(TestApp PUBLIC ImGui-SFML::ImGui-SFML)
 
 ##DEBUG
 #if(ENABLE_PROFILER)

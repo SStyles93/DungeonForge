@@ -16,8 +16,7 @@ int main()
 	//=========================================PROGRAM INIT====================================================
 	// run the program as long as the window is open
 
-	//Map map(50,50);
-	Generator m_randomGenerator(50,50);
+	Generator generator(49, 49);
 	Renderer renderer;
 
 	sf::Clock deltaClock;
@@ -38,7 +37,7 @@ int main()
 				{
 					case sf::Keyboard::Scancode::Backspace:
 					case sf::Keyboard::Scancode::Enter:
-						m_randomGenerator.generate();
+						generator.generate();
 						break;
 				}
 			}
@@ -47,61 +46,66 @@ int main()
 		//====================================IMGUI RENDER=========================================================
 
 		ImGui::SFML::Update(window, deltaClock.restart());
+		
+		// Main Window
 		ImGui::Begin("Map Generator");
 
-		static int map_size[2] = { m_randomGenerator.getMap().getWidth(), m_randomGenerator.getMap().getHeight()};
+		// Map Size
+		static int map_size[2] = { generator.getMap().getWidth(), generator.getMap().getHeight() };
 		ImGui::Text("Map Size");
 		ImGui::InputInt2("", map_size);
 		if (map_size[0] < 0) map_size[0] = 0;
 		if (map_size[1] < 0) map_size[1] = 0;
-		if (m_randomGenerator.getMap().getWidth() != map_size[0] || m_randomGenerator.getMap().getHeight() != map_size[1])
+		if (generator.getMap().getWidth() != map_size[0] || generator.getMap().getHeight() != map_size[1])
 		{
 			Map map(map_size[0], map_size[1]);
-			m_randomGenerator.getMap();
+			generator.setMap(map);
 		}
-		ImGui::Text("Seed");
-		int *seed = 0;
-		ImGui::InputInt("", seed);
-		if (*seed < -1) *seed = -1;
-		if (*seed > INT32_MAX) *seed = INT32_MAX;
+		
 
-
-
+		// Name Label
 		static int selected_generator = 0;
-		const char* names[] = { "Binary Space Partitioning", "Cellular Automata", "Drunkard's Walk", "Perlin" /*,"Wave Function Collapse" */};
+		const char* names[] = { "Binary Space Partitioning", "Cellular Automata", "Drunkard's Walk", "Perlin" /*,"Wave Function Collapse" */ };
+		ImGui::TextColored(ImVec4(sf::Color::Green), selected_generator == -1 ? "<None>" : names[selected_generator]);
 
+		//Dropdown List with Popup window
 		if (ImGui::Button("Select the Generator"))
 			ImGui::OpenPopup("Generator_Popup");
-		//ImGui::SameLine();
-		//ImGui::TextUnformatted();
-		ImGui::TextColored(ImVec4(sf::Color::Green), selected_generator == -1 ? "<None>" : names[selected_generator]);
 		if (ImGui::BeginPopup("Generator_Popup"))
 		{
 			ImGui::SeparatorText("Generators");
 			for (int i = 0; i < IM_ARRAYSIZE(names); i++)
 				if (ImGui::Selectable(names[i]))
 				{
-					m_randomGenerator.setAlgorithm((AlgorithmType)i);
+					generator.setAlgorithm((AlgorithmType)i);
 					selected_generator = i;
 				}
 			ImGui::EndPopup();
 		}
+
+		//Seed selection
+		static int seed = -1;
+		ImGui::InputInt("Seed", &seed);
+		if (seed < -1) seed = -1;
+		if (seed > INT32_MAX) seed = INT32_MAX;
+		generator.setSeed(seed);
+
+		// Generator Button
 		static int show_error_message = 0;
 		if (ImGui::Button("Generate"))
 		{
-			m_randomGenerator.generate();
+			generator.generate();
 		}
 		if (show_error_message && selected_generator == -1)
 			ImGui::TextColored(ImVec4(sf::Color::Red), "No generator was selected");
 
 		ImGui::End();
-
 		//ImGui::ShowDemoWindow();
 		//========================================RENDER=====================================================
 
 		window.clear(sf::Color::Black);
 		//map = generator.GetMap();
-		renderer.render(window, m_randomGenerator.getMap());
+		renderer.render(window, generator.getMap());
 
 		ImGui::SFML::Render(window);
 		window.display();

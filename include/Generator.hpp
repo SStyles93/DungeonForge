@@ -9,6 +9,7 @@
 #include <random>
 #include <queue>
 #include <vector>
+#include <unordered_set>
 
 enum AlgorithmType
 {
@@ -37,16 +38,13 @@ public:
 
 
 private:
-    struct Rect
-    {
-        int x, y, width, height;
-    };
 
 
     Map m_map;
-    AlgorithmType m_algorithmType = AlgorithmType::Perlin;
+    AlgorithmType m_algorithmType = AlgorithmType::BinarySpacePartitioning;
     int m_seed = 0;
     std::mt19937 m_randomGenerator;
+    int m_maxBorderSize = 15;
 
 
     void generateSeed();
@@ -61,9 +59,29 @@ private:
 
     //BSP
 
-    void splitSpace(std::vector<Rect>& spaces, int maxLeafSize);
+    /*Represents a rectangle defined by its position and size.*/
+    /*x position / y position / width / height*/ 
+    struct Rect
+    {
+        int x, y, width, height;
+    public:
+        std::pair<int, int> getCenter()
+        {
+            return { x + ((width / 2) + (width % 2)), y + ((height / 2) + (height % 2)) };
+        }
+    };
+
+    void splitSpaces(std::vector<Rect>& spaces, int maxBorderSize);
     void createRoom(Map& map, const Rect& room);
-    void connectRooms(Map& map, const std::pair<int,int>& pointA, const std::pair<int, int>& pointB);
+    void connectRooms(Map&, std::vector<Rect>& spaces);
+
+    /*/// <summary>
+    /// Splits the given spaces into smaller regions based on the maximum leaf size.
+    /// </summary>
+    /// <param name="spaces: ">A reference to a vector of Rect objects representing the spaces to be split. The vector may be modified in place.</param>
+    /// <param name="maxLeafSize: ">The maximum allowed size for each leaf region after splitting.</param>
+    void splitSpace(std::vector<Rect>& spaces, int maxLeafSize);
+    void connectRooms(Map& map, const std::pair<int,int>& pointA, const std::pair<int, int>& pointB);*/
 
     //Cellular Automata
     
