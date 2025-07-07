@@ -36,6 +36,9 @@ public:
     void setMap(Map& map);
     void setSeed(int seed);
 
+    // BSP
+
+    void setMaxBoderSize(int size);
 
 private:
 
