@@ -13,7 +13,7 @@ void Generator::generate()
             generateBSP(m_map);
             break;
         case CellularAutomata:
-            generateCellularAutomata(m_map, 45, 5);
+            generateCellularAutomata(m_map, m_fillProbability, m_iterations);
             break;
         case DrunkardsWalk:
             generateDrunkardsWalk(m_map);
@@ -49,11 +49,10 @@ void Generator::setMap(Map& map)
     m_map = map;
 }
 
-void Generator::setSeed(int seed)
+void Generator::setSeed(int value)
 {
-    m_seed = seed;
+    m_seed = value;
 }
-
 
 void Generator::generateSeed()
 {
@@ -66,10 +65,20 @@ void Generator::generateSeed()
     m_randomGenerator.seed(currentSeed);
 }
 
-void Generator::setMaxBoderSize(int size)
+void Generator::seMaxRoomEdgeSize(int size)
 {
     if (size < 1) return;
     m_maxBorderSize = size;
+}
+
+void Generator::setFillProbability(int value)
+{
+    m_fillProbability = value;
+}
+
+void Generator::setIterations(int value)
+{
+    m_iterations = value;
 }
 
 
@@ -87,6 +96,7 @@ void Generator::generatePerlin(Map& map)
 }
 
 //DLL EXPORT
+#pragma region DLL
 
 PXP_DF_API Generator* CreateGenerator(unsigned int width, unsigned int height)
 {
@@ -129,14 +139,25 @@ PXP_DF_API void SetSeed(Generator* instance, int seed)
     instance->setSeed(seed);
 }
 
-PXP_DF_API void SetMaxBoderSize(Generator* instance, int size)
+PXP_DF_API void SetMaxRoomEdgeSize(Generator* instance, int size)
 {
     if (instance == nullptr) return;
-    instance->setMaxBoderSize(size);
+    instance->seMaxRoomEdgeSize(size);
 }
 
+PXP_DF_API void SetFillProbability(Generator* instance, int value)
+{
+    if (instance == nullptr) return;
+    instance->setFillProbability(value);
+}
 
+PXP_DF_API void SetIterations(Generator* instance, int value)
+{
+    if (instance == nullptr) return;
+    instance->setIterations(value);
+}
 
+#pragma endregion
 
 
 void Generator::generateDrunkardsWalk(Map& map)

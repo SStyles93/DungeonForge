@@ -36,8 +36,14 @@ public:
     void setMap(Map& map);
     void setSeed(int seed);
 
-    //BSP
-    void setMaxBoderSize(int size);
+    // BSP related functions
+
+    void seMaxRoomEdgeSize(int size);
+    
+    // Automata related functions
+
+    void setFillProbability(int value);
+    void setIterations(int value);
 
 private:
     struct Rect
@@ -51,15 +57,17 @@ private:
     };
 
 
-    Map m_map;
-    AlgorithmType m_algorithmType = AlgorithmType::Perlin;
-    int m_seed = -1;
-    std::mt19937 m_randomGenerator;
-    int m_maxBorderSize;
+    Map m_map; //Map object used to generate maps
+    AlgorithmType m_algorithmType = AlgorithmType::Perlin; //Algorithm Type selection
+    std::mt19937 m_randomGenerator; //Mercene-twister engine (rdn)
+    int m_seed = -1; //Generator - Seed used by the mercene twister engine (-1 random - INT32_MAX)
+    int m_maxBorderSize = 10; //BSP - Value that defines when the algorithm will stop cutting rooms
+    int m_fillProbability = 45; //Automata - Value that defines the chances for the algo. to fill a tile or not
+    int m_iterations = 5; //Automata - Number of iterations for the smoothing process
 
     void generateSeed();
 
-    // Algorithms
+    //Generator Algorithms
 
     void generatePerlin(Map& map);
     void generateDrunkardsWalk(Map& map);
@@ -74,7 +82,7 @@ private:
     void connectRooms(Map& map, std::vector<Rect>& spaces);
 
     //Cellular Automata
-    
+
     void floodFillRegions(Map& map);
     void connectPoints(Map& map, const std::pair<int, int>& pointA, const std::pair<int, int>& pointB);
 
@@ -114,5 +122,9 @@ extern "C"
 
     PXP_DF_API void SetSeed(Generator* instance, int seed);
 
-    PXP_DF_API void SetMaxBoderSize(Generator* instance, int size);
+    PXP_DF_API void SetMaxRoomEdgeSize(Generator* instance, int size);
+
+    PXP_DF_API void SetFillProbability(Generator* instance, int value);
+
+    PXP_DF_API void SetIterations(Generator* instance, int value);
 }
