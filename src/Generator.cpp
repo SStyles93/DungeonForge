@@ -81,7 +81,10 @@ void Generator::setIterations(int value)
 	m_iterations = value;
 }
 
-
+void Generator::setFillPercentage(float value)
+{
+	m_fillPercentage = value;
+}
 
 void Generator::generatePerlin(Map& map)
 {
@@ -104,7 +107,7 @@ void Generator::generateDrunkardsWalk(Map& map)
 			map.setTile(x, y, 1);
 
 	unsigned int floorCount = 0;
-	unsigned int targetFloorCount = (map.getWidth() * map.getHeight()) * 0.4f;
+	unsigned int targetFloorCount = (map.getWidth() * map.getHeight()) * (m_fillPercentage/100.0f);
 
 	// Start in the center
 	int x = map.getWidth() / 2;

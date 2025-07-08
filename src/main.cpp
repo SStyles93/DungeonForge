@@ -94,19 +94,27 @@ int main()
 		static int roomEdge = 10;
 		static int fillProbability = 45;
 		static int iterations = 5;
+		static float fillPercentage = 0.8f;
 
 		switch (selected_generator)
 		{
+			//BSP
 			case 0:
 				ImGui::InputInt("Room Edge", &roomEdge);
 				generator.setMaxRoomEdgeSize(roomEdge);
 				break;
+			//Cellular Automata
 			case 1:
 				ImGui::InputInt("Fill Probability", &fillProbability);
 				generator.setFillProbability(fillProbability);
 
 				ImGui::InputInt("Iterations", &iterations);
 				generator.setIterations(iterations);
+				break;
+			//Drunkard's Walk
+			case 2:
+				ImGui::DragFloat("Fill Percentage", &fillPercentage, 1.f, 1.f, 90.f, "%.0f /100");
+				generator.setFillPercentage(fillPercentage);
 				break;
 			default:
 				break;
