@@ -38,7 +38,7 @@ public:
 
     // BSP related functions
 
-    void seMaxRoomEdgeSize(int size);
+    void setMaxRoomEdgeSize(int size);
     
     // Automata related functions
 
