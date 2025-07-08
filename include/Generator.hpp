@@ -38,7 +38,12 @@ public:
 
     // BSP
 
-    void setMaxBoderSize(int size);
+    void setMaxRoomEdgeSize(int size);
+
+    // Automata related functions
+
+    void setFillProbability(int value);
+    void setIterations(int value);
 
 private:
 
@@ -48,6 +53,9 @@ private:
     int m_seed = 0;
     std::mt19937 m_randomGenerator;
     int m_maxBorderSize = 15;
+    int m_fillProbability = 45; //Automata - Value that defines the chances for the algo. to fill a tile or not
+    int m_iterations = 5; //Automata - Number of iterations for the smoothing process
+
 
 
     void generateSeed();

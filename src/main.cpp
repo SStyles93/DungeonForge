@@ -46,7 +46,7 @@ int main()
 		//====================================IMGUI RENDER=========================================================
 
 		ImGui::SFML::Update(window, deltaClock.restart());
-		
+
 		// Main Window
 		ImGui::Begin("Map Generator");
 
@@ -61,12 +61,17 @@ int main()
 			Map map(map_size[0], map_size[1]);
 			generator.setMap(map);
 		}
-		
 
-		// Name Label
+		//Seed selection
+		static int seed = -1;
+		ImGui::InputInt("Seed", &seed);
+		if (seed < -1) seed = -1;
+		if (seed > INT32_MAX) seed = INT32_MAX;
+		generator.setSeed(seed);
+
+
 		static int selected_generator = 0;
 		const char* names[] = { "Binary Space Partitioning", "Cellular Automata", "Drunkard's Walk", "Perlin" /*,"Wave Function Collapse" */ };
-		ImGui::TextColored(ImVec4(sf::Color::Green), selected_generator == -1 ? "<None>" : names[selected_generator]);
 
 		//Dropdown List with Popup window
 		if (ImGui::Button("Select the Generator"))
@@ -83,12 +88,30 @@ int main()
 			ImGui::EndPopup();
 		}
 
-		//Seed selection
-		static int seed = -1;
-		ImGui::InputInt("Seed", &seed);
-		if (seed < -1) seed = -1;
-		if (seed > INT32_MAX) seed = INT32_MAX;
-		generator.setSeed(seed);
+		// Name Label
+		ImGui::TextColored(ImVec4(sf::Color::Green), selected_generator == -1 ? "<None>" : names[selected_generator]);
+
+		static int roomEdge = 10;
+		static int fillProbability = 45;
+		static int iterations = 5;
+
+		switch (selected_generator)
+		{
+			case 0:
+				ImGui::InputInt("Room Edge", &roomEdge);
+				generator.setMaxRoomEdgeSize(roomEdge);
+				break;
+			case 1:
+				ImGui::InputInt("Fill Probability", &fillProbability);
+				generator.setFillProbability(fillProbability);
+
+				ImGui::InputInt("Iterations", &iterations);
+				generator.setIterations(iterations);
+				break;
+			default:
+				break;
+		}
+
 
 		// Generator Button
 		static int show_error_message = 0;

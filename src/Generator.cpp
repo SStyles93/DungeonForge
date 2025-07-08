@@ -13,7 +13,7 @@ void Generator::generate()
 			generateBSP(m_map);
 			break;
 		case CellularAutomata:
-			generateCellularAutomata(m_map, 45, 5);
+			generateCellularAutomata(m_map, m_fillProbability, m_iterations);
 			break;
 		case DrunkardsWalk:
 			generateDrunkardsWalk(m_map);
@@ -28,7 +28,6 @@ void Generator::generate()
 			break;
 	}
 }
-
 
 void Generator::setAlgorithm(AlgorithmType type)
 {
@@ -66,11 +65,22 @@ void Generator::generateSeed()
 	m_randomGenerator.seed(currentSeed);
 }
 
-void Generator::setMaxBoderSize(int size)
+void Generator::setMaxRoomEdgeSize(int size)
 {
 	if (size < 1) return;
 	m_maxBorderSize = size;
 }
+
+void Generator::setFillProbability(int value)
+{
+	m_fillProbability = value;
+}
+
+void Generator::setIterations(int value)
+{
+	m_iterations = value;
+}
+
 
 
 void Generator::generatePerlin(Map& map)
@@ -126,6 +136,7 @@ void Generator::generateDrunkardsWalk(Map& map)
 }
 
 
+
 void Generator::generateBSP(Map& map)
 {
 	//Fill map with walls
@@ -136,7 +147,7 @@ void Generator::generateBSP(Map& map)
 	std::vector<Rect> spaces;
 	spaces.push_back({ 0, 0, (int)map.getWidth(), (int)map.getHeight() });
 
-	splitSpaces(spaces, 15);
+	splitSpaces(spaces, m_maxBorderSize);
 
 	for (const Rect& space : spaces)
 	{
@@ -394,7 +405,7 @@ void Generator::generateCellularAutomata(Map& map, int fillProbability, int iter
 			if (x == 0 || y == 0 || x == width - 1 || y == height - 1)
 				map.setTile(x, y, 1);  // edges stay walls
 			else
-				map.setTile(x, y, (m_randomGenerator() % 100 < fillProbability) ? 1 : 0);
+				map.setTile(x, y, (m_randomGenerator() % 100 > fillProbability) ? 1 : 0);
 		}
 	}
 
