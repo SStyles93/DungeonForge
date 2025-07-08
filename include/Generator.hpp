@@ -45,6 +45,10 @@ public:
     void setFillProbability(int value);
     void setIterations(int value);
 
+    //Drunkard's Walk
+
+    void setFillPercentage(float value);
+
 private:
     struct Rect
     {
@@ -64,6 +68,7 @@ private:
     int m_maxBorderSize = 10; //BSP - Value that defines when the algorithm will stop cutting rooms
     int m_fillProbability = 45; //Automata - Value that defines the chances for the algo. to fill a tile or not
     int m_iterations = 5; //Automata - Number of iterations for the smoothing process
+    float m_fillPercentage = 0.8f; //Drunkard's Walk - Target % of floor fill
 
     void generateSeed();
 
@@ -127,4 +132,6 @@ extern "C"
     PXP_DF_API void SetFillProbability(Generator* instance, int value);
 
     PXP_DF_API void SetIterations(Generator* instance, int value);
+
+    PXP_DF_API void SetFillPercentage(Generator* instance, float value);
 }
