@@ -5,6 +5,7 @@
 #include "imgui-SFML.h"
 #include <SFML/Graphics.hpp>
 #include <cassert>
+#include <optional>
 
 int main()
 {
@@ -16,7 +17,7 @@ int main()
 	//=========================================PROGRAM INIT====================================================
 	// run the program as long as the window is open
 
-	Generator generator(49, 49);
+	Generator generator(40, 40);
 	Renderer renderer;
 
 	sf::Clock deltaClock;
@@ -24,22 +25,14 @@ int main()
 	while (window.isOpen())
 	{
 		//======================================EVENT LOOP=======================================================
-
-		while (const std::optional event = window.pollEvent())
+		sf::Event event;
+		while (window.pollEvent(event))
 		{
-			ImGui::SFML::ProcessEvent(window, *event);
-			// "close requested" event: we close the window
-			if (event->is<sf::Event::Closed>())
-				window.close();
-			else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
+			ImGui::SFML::ProcessEvent(event);
+
+			if (event.type == sf::Event::Closed)
 			{
-				switch (keyPressed->scancode)
-				{
-					case sf::Keyboard::Scancode::Backspace:
-					case sf::Keyboard::Scancode::Enter:
-						generator.generate();
-						break;
-				}
+				window.close();
 			}
 		}
 

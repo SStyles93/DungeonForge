@@ -1,5 +1,6 @@
 ﻿cmake_minimum_required(VERSION 3.31)
 
+
 project("DungeonForge")
 
 set(CMAKE_CXX_STANDARD 20)
@@ -11,7 +12,7 @@ find_package(fmt CONFIG REQUIRED)
 find_package(imgui CONFIG REQUIRED)
 find_package(ImGui-SFML CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
-find_package(SFML COMPONENTS Graphics CONFIG REQUIRED)
+find_package(SFML COMPONENTS graphics CONFIG REQUIRED)
 #find_package(GTest CONFIG REQUIRED)
 #find_package(benchmark CONFIG REQUIRED)
 
@@ -29,6 +30,7 @@ target_include_directories(TestApp PUBLIC include/)
 target_link_libraries(TestApp PUBLIC fmt::fmt)
 target_link_libraries(TestApp PUBLIC nlohmann_json::nlohmann_json)
 target_link_libraries(TestApp PUBLIC ImGui-SFML::ImGui-SFML)
+target_link_libraries(TestApp PUBLIC sfml-system sfml-network sfml-graphics sfml-window)
 
 ##DEBUG
 #if(ENABLE_PROFILER)
